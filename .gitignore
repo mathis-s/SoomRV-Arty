@@ -1,0 +1,89 @@
+#########################################################################################
+##  Project    : Collect of various scripts for working with EDA-tools (ASIC/FPGA/etc) ##
+##  Link       : https://github.com/iDoka/eda-scripts                                  ##
+##  Description: .gitignore                                                            ##
+##  Usage      : just rename or add contain to .gitignore                              ##
+##  License    : MIT                                                                   ##
+#########################################################################################
+
+## log files
+*.log
+*.jou
+*.rpt
+*.vdi
+
+## bitstream
+*.bit
+*.bin
+*.mcs
+*.svf
+*.image
+
+## netlist
+*.edf
+*.edif
+*.vn
+*.vm
+
+## SDF
+*.sdf
+
+## sim dump
+*.vcd
+*.saif
+*.tcf
+*.wdb
+
+## others
+unisims
+
+## C-files
+*.elf
+*.a
+*.sa
+*.so
+*.lib
+
+## dirs
+vivado.cache/
+vivado.hw/
+vivado.ip_user_files/
+vivado.runs/
+vivado.sim/
+
+###### for Xilinx Vivado|ISE
+.Xil/
+.cache/
+fsm_encoding.os
+tab_*/
+webtalk.*
+vivado_pid*.str
+hs_err_pid*
+xelab.*
+xsim.*
+xvlog.*
+*.cache
+*.sim
+*.runs
+*.runs/.jobs
+*.hw
+*.backup.*
+*.debug
+
+## checkpoint files
+*.dcp
+
+boot_image/host/compr
+boot_image/a.out
+synth/SoC_synth.v
+
+## include some artifacts
+!SoomRV-Arty.srcs/sources_1/new/SoC.edif
+!boot_image/boot_image.bin
+SoomRV-Arty.runs/*
+!SoomRV-Arty.runs/
+!SoomRV-Arty.runs/impl
+SoomRV-Arty.runs/impl/*
+!SoomRV-Arty.runs/impl/Top.bin
+!SoomRV-Arty.runs/impl/Top.bit
+!SoomRV-Arty.runs/impl/Top_prog.bin

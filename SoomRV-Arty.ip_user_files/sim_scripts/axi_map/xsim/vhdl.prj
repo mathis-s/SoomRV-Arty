@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../bd/axi_map/ip/axi_map_proc_sys_reset_0_1/sim/axi_map_proc_sys_reset_0_1.vhd" \
+
+# Do not sort compile order
+nosort

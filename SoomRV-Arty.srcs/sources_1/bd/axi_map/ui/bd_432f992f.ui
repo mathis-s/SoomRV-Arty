@@ -1,0 +1,92 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Addressing View_ExpandedHierarchyInLayout":"",
+   "Addressing View_Layers":"/clk_wiz_0_clk_out1:false|/S00_ARESETN_0_1:false|/mig_7series_0_ui_clk:false|/S00_ACLK_0_1:false|/ARESETN_0_1:false|/axi_uartlite_0_interrupt:false|/mig_7series_0_ui_clk_sync_rst:false|",
+   "Addressing View_Layout":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port S00_AXI_0 -pg 1 -lvl 0 -x -50 -y 150 -defaultsOSRD
+preplace port port-id_init_calib_complete_0 -pg 1 -lvl 4 -x 600 -y 20 -defaultsOSRD
+preplace port port-id_mmcm_locked_0 -pg 1 -lvl 4 -x 600 -y 50 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 2 -x 435 -y 160 -defaultsOSRD
+preplace inst mig_7series_0 -pg 1 -lvl 2 -x 435 -y 60 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 1 -x 160 -y 150 -defaultsOSRD
+preplace netloc ARESETN_0_1 1 0 1 20J 200n
+preplace netloc S00_ACLK_0_1 1 0 1 NJ 230n
+preplace netloc S00_ARESETN_0_1 1 0 2 20J 390n 360
+preplace netloc axi_uartlite_0_interrupt 1 2 2 NJ 290n NJ
+preplace netloc clk_wiz_0_clk_out1 1 0 4 40 400n 350 360n NJ 360n 810
+preplace netloc clk_wiz_0_locked 1 3 1 NJ 100n
+preplace netloc mig_7series_0_ui_clk 1 0 3 50 20n N 20n 630
+preplace netloc mig_7series_0_ui_clk_sync_rst 1 0 3 30 10n N 10n 620
+preplace netloc S00_AXI_0_1 1 0 1 N 150
+preplace netloc axi_interconnect_0_M00_AXI 1 1 1 290 60n
+preplace netloc axi_interconnect_0_M01_AXI 1 1 1 NJ 160
+levelinfo -pg 1 -50 160 435 560 600
+pagesize -pg 1 -db -bbox -sgen -170 0 800 570
+",
+   "Addressing View_ScaleFactor":"1.0",
+   "Addressing View_TopLeft":"-1251,-684",
+   "Color Coded_ScaleFactor":"1.0",
+   "Color Coded_TopLeft":"-1140,-603",
+   "Default View_Layers":"/ARESETN_0_1:true|/mig_7series_0_ui_clk_sync_rst:true|/S00_ARESETN_0_1:true|/S00_ACLK_0_1:true|/clk_wiz_0_clk_out1:true|/axi_uartlite_0_interrupt:true|/mig_7series_0_ui_clk:true|",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-545,-478",
+   "Display-PortTypeClock":"true",
+   "Display-PortTypeInterrupt":"true",
+   "Display-PortTypeOthers":"true",
+   "Display-PortTypeReset":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Interfaces View_ScaleFactor":"1.0",
+   "Interfaces View_TopLeft":"-1160,-677",
+   "PinnedBlocks":"/axi_interconnect_0|/clk_wiz_0|",
+   "PinnedPorts":"interrupt_0|mmcm_locked_0|clk_ref_i_0|sys_clk_i_0|",
+   "Reduced Jogs_ScaleFactor":"1.0",
+   "Reduced Jogs_TopLeft":"-1140,-624",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port DDR3_0 -pg 1 -lvl 6 -x 2090 -y 210 -defaultsOSRD
+preplace port S00_AXI_0 -pg 1 -lvl 0 -x -90 -y 330 -defaultsOSRD
+preplace port port-id_interrupt_0 -pg 1 -lvl 6 -x 2090 -y -100 -defaultsOSRD
+preplace port port-id_mmcm_locked_0 -pg 1 -lvl 6 -x 2090 -y 330 -defaultsOSRD
+preplace port port-id_clk_ref_i_0 -pg 1 -lvl 0 -x -90 -y 230 -defaultsOSRD
+preplace port port-id_sys_clk_i_0 -pg 1 -lvl 0 -x -90 -y 270 -defaultsOSRD
+preplace port port-id_clk21 -pg 1 -lvl 6 -x 2090 -y 180 -defaultsOSRD
+preplace port port-id_ext_reset_in_0 -pg 1 -lvl 0 -x -90 -y 0 -defaultsOSRD
+preplace port port-id_mb_reset_0 -pg 1 -lvl 6 -x 2090 -y -20 -defaultsOSRD
+preplace port port-id_UART_tx_0 -pg 1 -lvl 6 -x 2090 -y 490 -defaultsOSRD
+preplace port port-id_UART_rx_0 -pg 1 -lvl 0 -x -90 -y 520 -defaultsOSRD
+preplace port port-id_init_calib_complete_0 -pg 1 -lvl 6 -x 2090 -y 150 -defaultsOSRD
+preplace port port-id_pc_asserted_0 -pg 1 -lvl 6 -x 2090 -y 730 -defaultsOSRD
+preplace portBus pc_status_0 -pg 1 -lvl 6 -x 2090 -y 700 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 1 -x 620 -y 350 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 4 -x 1560 -y 280 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 5 -x 1860 -y 20 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 4 -x 1560 -y -60 -defaultsOSRD
+preplace inst mig_7series_0 -pg 1 -lvl 3 -x 1260 -y 110 -defaultsOSRD
+preplace inst UART8250Lite_0 -pg 1 -lvl 2 -x 930 -y 490 -defaultsOSRD
+preplace netloc M01_ARESETN_1 1 0 6 460 500 820 390 N 390 N 390 N 390 2040
+preplace netloc UART8250Lite_0_UART_tx 1 2 4 NJ 490 N 490 NJ 490 NJ
+preplace netloc UART_rx_0_1 1 0 2 NJ 520 NJ
+preplace netloc clk_ref_i_0_1 1 0 3 -70J 110 NJ 110 N
+preplace netloc clk_wiz_0_clk_out1 1 0 6 450 510 800 350 N 350 N 350 1660 180 N
+preplace netloc clk_wiz_0_locked 1 4 1 1670 60n
+preplace netloc ext_reset_in_0_1 1 0 5 NJ 0 NJ 0 1130 0 N 0 NJ
+preplace netloc mig_7series_0_init_calib_complete 1 3 3 NJ 150 NJ 150 NJ
+preplace netloc mig_7series_0_mmcm_locked 1 3 3 N 130 NJ 130 2060J
+preplace netloc mig_7series_0_ui_clk 1 0 4 440 210 NJ 210 N 210 1390
+preplace netloc proc_sys_reset_0_interconnect_aresetn 1 0 6 470 490 810J 400 1130 220 1400 210 NJ 210 2050
+preplace netloc proc_sys_reset_0_mb_reset 1 5 1 N -20
+preplace netloc sys_clk_i_0_1 1 0 3 -60J 130 NJ 130 N
+preplace netloc xlconstant_0_dout 1 3 2 1470 40 1650
+preplace netloc S00_AXI_0_1 1 0 1 -50 270n
+preplace netloc axi_interconnect_0_M00_AXI 1 1 2 780 70 N
+preplace netloc axi_interconnect_0_M01_AXI 1 1 1 770 360n
+preplace netloc mig_7series_0_DDR3 1 3 3 1400 120 N 120 2070
+levelinfo -pg 1 -90 620 930 1260 1560 1860 2090
+pagesize -pg 1 -db -bbox -sgen -240 -480 2350 1510
+"
+}
+{
+   "da_board_cnt":"5",
+   "da_clkrst_cnt":"1"
+}

@@ -1,0 +1,21 @@
+logger -nodebug -stderr
+logger -nowarn "Replacing memory"
+
+read_verilog -sv synth/SoC.v
+read_verilog -sv SoomRV/hardfloat/addRecFN.v
+read_verilog -sv SoomRV/hardfloat/compareRecFN.v
+read_verilog -sv SoomRV/hardfloat/fNToRecFN.v
+read_verilog -sv SoomRV/hardfloat/HardFloat_primitives.v
+read_verilog -sv SoomRV/hardfloat/HardFloat_specialize.v
+read_verilog -sv SoomRV/hardfloat/recFNToIN.v
+read_verilog -sv SoomRV/hardfloat/recFNToFN.v
+read_verilog -sv SoomRV/hardfloat/mulRecFN.v
+read_verilog -sv SoomRV/hardfloat/HardFloat_rawFN.v
+read_verilog -sv SoomRV/hardfloat/isSigNaNRecFN.v
+read_verilog -sv SoomRV/hardfloat/iNToRecFN.v
+read_verilog -sv SoomRV/hardfloat/divSqrtRecFN_small.v
+
+synth_xilinx -top SoC -flatten -edif synth/SoC.edif
+write_verilog -v synth/SoC_synth.v
+stat -tech xilinx
+#sta
