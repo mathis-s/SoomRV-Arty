@@ -38,7 +38,7 @@ To pause the core, you can press `BTN0` (this will unset `soomrv.en`, which disa
 
 ## To Do
  - Fix spurious hold time violations
- - UART timer interrupt
+ - UART interrupt
  - Filesystem on SDCard or similar (instead of volatile ramfs)
 
 ## External Source Code
