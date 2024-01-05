@@ -71,7 +71,7 @@ xvlog.*
 *.debug
 
 ## checkpoint files
-*.dcp
+#*.dcp
 
 boot_image/host/compr
 boot_image/a.out
