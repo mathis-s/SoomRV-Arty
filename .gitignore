@@ -87,3 +87,4 @@ SoomRV-Arty.runs/impl/*
 !SoomRV-Arty.runs/impl/Top.bin
 !SoomRV-Arty.runs/impl/Top.bit
 !SoomRV-Arty.runs/impl/Top_prog.bin
+!SoomRV-Arty.srcs/utils_1/imports/synth/TopWrapper.dcp
