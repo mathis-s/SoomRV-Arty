@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -64,7 +64,7 @@ axi_map_auto_pc_0_sc::axi_map_auto_pc_0_sc(const sc_core::sc_module_name& nm) : 
     model_param_props.addLong("C_M_AXI_PROTOCOL", "2");
     model_param_props.addLong("C_S_AXI_PROTOCOL", "0");
     model_param_props.addLong("C_IGNORE_ID", "0");
-    model_param_props.addLong("C_AXI_ID_WIDTH", "2");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "3");
     model_param_props.addLong("C_AXI_ADDR_WIDTH", "12");
     model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
     model_param_props.addLong("C_AXI_SUPPORTS_WRITE", "1");
@@ -76,7 +76,7 @@ axi_map_auto_pc_0_sc::axi_map_auto_pc_0_sc(const sc_core::sc_module_name& nm) : 
     model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");
     model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
     model_param_props.addLong("C_TRANSLATION_MODE", "2");
-    model_param_props.addString("C_FAMILY", "artix7");
+    model_param_props.addString("C_FAMILY", "kintex7");
     model_param_props.addString("COMPONENT_NAME", "axi_map_auto_pc_0");
 
   mp_impl = new axi_protocol_converter("inst", model_param_props);

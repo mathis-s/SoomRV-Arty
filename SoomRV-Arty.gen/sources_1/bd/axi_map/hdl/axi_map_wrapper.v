@@ -1,8 +1,8 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-//Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+//Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-//Date        : Wed Nov 22 00:33:01 2023
+//Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+//Date        : Wed Dec  4 21:23:55 2024
 //Host        : m-desktop running 64-bit Manjaro Linux
 //Command     : generate_target axi_map_wrapper.bd
 //Design      : axi_map_wrapper
@@ -65,29 +65,27 @@ module axi_map_wrapper
     S00_AXI_0_wready,
     S00_AXI_0_wstrb,
     S00_AXI_0_wvalid,
+    SYS_CLK_0_clk_n,
+    SYS_CLK_0_clk_p,
     UART_rx_0,
     UART_tx_0,
     clk21,
-    clk_ref_i_0,
+    clkx5,
     ext_reset_in_0,
     init_calib_complete_0,
     interrupt_0,
-    mb_reset_0,
-    mmcm_locked_0,
-    pc_asserted_0,
-    pc_status_0,
-    sys_clk_i_0);
-  output [13:0]DDR3_0_addr;
+    mb_reset_0);
+  output [14:0]DDR3_0_addr;
   output [2:0]DDR3_0_ba;
   output DDR3_0_cas_n;
   output [0:0]DDR3_0_ck_n;
   output [0:0]DDR3_0_ck_p;
   output [0:0]DDR3_0_cke;
   output [0:0]DDR3_0_cs_n;
-  output [1:0]DDR3_0_dm;
-  inout [15:0]DDR3_0_dq;
-  inout [1:0]DDR3_0_dqs_n;
-  inout [1:0]DDR3_0_dqs_p;
+  output [3:0]DDR3_0_dm;
+  inout [31:0]DDR3_0_dq;
+  inout [3:0]DDR3_0_dqs_n;
+  inout [3:0]DDR3_0_dqs_p;
   output [0:0]DDR3_0_odt;
   output DDR3_0_ras_n;
   output DDR3_0_reset_n;
@@ -131,30 +129,28 @@ module axi_map_wrapper
   output [0:0]S00_AXI_0_wready;
   input [15:0]S00_AXI_0_wstrb;
   input [0:0]S00_AXI_0_wvalid;
+  input SYS_CLK_0_clk_n;
+  input SYS_CLK_0_clk_p;
   input UART_rx_0;
   output UART_tx_0;
   output clk21;
-  input clk_ref_i_0;
+  output clkx5;
   input ext_reset_in_0;
-  output init_calib_complete_0;
+  output [0:0]init_calib_complete_0;
   output interrupt_0;
   output mb_reset_0;
-  output mmcm_locked_0;
-  output pc_asserted_0;
-  output [159:0]pc_status_0;
-  input sys_clk_i_0;
 
-  wire [13:0]DDR3_0_addr;
+  wire [14:0]DDR3_0_addr;
   wire [2:0]DDR3_0_ba;
   wire DDR3_0_cas_n;
   wire [0:0]DDR3_0_ck_n;
   wire [0:0]DDR3_0_ck_p;
   wire [0:0]DDR3_0_cke;
   wire [0:0]DDR3_0_cs_n;
-  wire [1:0]DDR3_0_dm;
-  wire [15:0]DDR3_0_dq;
-  wire [1:0]DDR3_0_dqs_n;
-  wire [1:0]DDR3_0_dqs_p;
+  wire [3:0]DDR3_0_dm;
+  wire [31:0]DDR3_0_dq;
+  wire [3:0]DDR3_0_dqs_n;
+  wire [3:0]DDR3_0_dqs_p;
   wire [0:0]DDR3_0_odt;
   wire DDR3_0_ras_n;
   wire DDR3_0_reset_n;
@@ -198,18 +194,16 @@ module axi_map_wrapper
   wire [0:0]S00_AXI_0_wready;
   wire [15:0]S00_AXI_0_wstrb;
   wire [0:0]S00_AXI_0_wvalid;
+  wire SYS_CLK_0_clk_n;
+  wire SYS_CLK_0_clk_p;
   wire UART_rx_0;
   wire UART_tx_0;
   wire clk21;
-  wire clk_ref_i_0;
+  wire clkx5;
   wire ext_reset_in_0;
-  wire init_calib_complete_0;
+  wire [0:0]init_calib_complete_0;
   wire interrupt_0;
   wire mb_reset_0;
-  wire mmcm_locked_0;
-  wire pc_asserted_0;
-  wire [159:0]pc_status_0;
-  wire sys_clk_i_0;
 
   axi_map axi_map_i
        (.DDR3_0_addr(DDR3_0_addr),
@@ -266,16 +260,14 @@ module axi_map_wrapper
         .S00_AXI_0_wready(S00_AXI_0_wready),
         .S00_AXI_0_wstrb(S00_AXI_0_wstrb),
         .S00_AXI_0_wvalid(S00_AXI_0_wvalid),
+        .SYS_CLK_0_clk_n(SYS_CLK_0_clk_n),
+        .SYS_CLK_0_clk_p(SYS_CLK_0_clk_p),
         .UART_rx_0(UART_rx_0),
         .UART_tx_0(UART_tx_0),
         .clk21(clk21),
-        .clk_ref_i_0(clk_ref_i_0),
+        .clkx5(clkx5),
         .ext_reset_in_0(ext_reset_in_0),
         .init_calib_complete_0(init_calib_complete_0),
         .interrupt_0(interrupt_0),
-        .mb_reset_0(mb_reset_0),
-        .mmcm_locked_0(mmcm_locked_0),
-        .pc_asserted_0(pc_asserted_0),
-        .pc_status_0(pc_status_0),
-        .sys_clk_i_0(sys_clk_i_0));
+        .mb_reset_0(mb_reset_0));
 endmodule

@@ -24,34 +24,38 @@ module QSPIReader
     output logic s_axi_wlast,
     output logic s_axi_wvalid,
     input logic s_axi_wready,
-    
+
     output logic OUT_error,
     output logic OUT_done
 );
 
 //localparam END_ADDR = 32'hC5_9F80 >> 4;
-localparam END_ADDR = 32'hC0_0000 >> 4;
-//localparam END_ADDR = 32'h00_700 >> 4;
+`ifdef SYNTHESIS
+localparam END_ADDR = 32'h151_6264 >> 4;
+`else
+localparam END_ADDR = 32'h000700 >> 4;
+`endif
 
 logic[3:0] sdo;
 logic oen;
 assign sdio[1:0] = oen ? sdo[1:0] : 'z;
 assign sdio[3:2] = 2'b11;
 
-typedef enum logic[2:0] 
+typedef enum logic[2:0]
 {
-    STATE_BOOT, STATE_SEND, STATE_WAIT, STATE_READ, STATE_IDLE
+    STATE_BOOT, STATE_SETUP_CLK, STATE_SEND, STATE_WAIT, STATE_READ, STATE_WRITE_ZEROS, STATE_IDLE
 } State;
 
 State state = STATE_BOOT;
 State retState = STATE_BOOT;
 
-wire[31:0] command = 32'h3B_3A607C;
+//wire[31:0] command = 32'h3B_3A607C;
+wire[31:0] command = 32'h3B_AE_9D9C;
 logic[5:0] bitIdx;
 logic[3:0] waitCnt;
 
 logic[5:0] hbIdx;
-logic[27-8:0] addr;
+logic[27-1:0] addr;
 logic[127:0] data = 0;
 logic ignore;
 
@@ -65,7 +69,7 @@ always_comb begin
 end
 
 always_ff@(posedge clk) begin
-    
+
     if (rst) begin
         state <= STATE_BOOT;
         sen <= 1;
@@ -75,6 +79,7 @@ always_ff@(posedge clk) begin
         hbIdx <= 63;
         OUT_done <= 0;
         OUT_error <= 1;
+        s_axi_awid <= 0;
     end
     else begin
 
@@ -89,11 +94,21 @@ always_ff@(posedge clk) begin
                 oen <= 0;
                 hbIdx <= 63;
                 OUT_done <= 0;
-                    
-                state <= STATE_SEND;
+
                 bitIdx <= 31;
                 waitCnt <= 7;
-                addr <= 20'h00_000;
+                state <= STATE_SETUP_CLK;
+                addr <= 0;
+            end
+
+            // do a few empty sclk cycles for STARTUPE2 setup
+            STATE_SETUP_CLK: begin
+                sclk <= !sclk;
+                if (sclk == 0) begin
+                    if (waitCnt == 0)
+                        state <= STATE_SEND;
+                    waitCnt <= waitCnt - 1;
+                end
             end
 
             STATE_SEND: begin
@@ -101,6 +116,7 @@ always_ff@(posedge clk) begin
                 if (sclk == 1) begin
                     // done
                     if (bitIdx == 63) begin
+                        waitCnt <= 7;
                         state <= STATE_WAIT;
                         oen <= 0;
                     end
@@ -135,15 +151,15 @@ always_ff@(posedge clk) begin
                     hbIdx <= hbIdx - 1;
                     ignore <= 0;
                     if (!ignore && hbIdx == 63) begin
-                        
+
                         if ((s_axi_awvalid && !s_axi_awready) && (s_axi_wvalid && !s_axi_wready))
                             OUT_error <= 1;
-                        
-                        s_axi_awaddr <= {8'h80, addr, 4'b0};
+
+                        s_axi_awaddr <= {1'b1, addr, 4'b0};
                         s_axi_awid <= s_axi_awid + 1;
-                        
+
                         s_axi_awvalid <= 1;
-                        
+
                         for (integer i = 0; i < 16; i=i+1)
                             s_axi_wdata[i*8+:8] <= data[(15-i)*8+:8];
                         s_axi_wlast <= 1;
@@ -151,11 +167,30 @@ always_ff@(posedge clk) begin
 
                         addr <= addr + 1;
                         if (addr == (END_ADDR - 1)) begin
+                            `ifdef SYNTHESIS
+                            state <= STATE_WRITE_ZEROS;
+                            `else
                             state <= STATE_IDLE;
+                            `endif
                             oen <= 1;
                             sen <= 1;
                         end
                     end
+                end
+            end
+
+            STATE_WRITE_ZEROS: begin
+                if (addr == 0)
+                    state <= STATE_IDLE;
+                else if (!s_axi_awvalid && !s_axi_wvalid) begin
+                    s_axi_awvalid <= 1;
+                    s_axi_awaddr <= {1'b1, addr, 4'b0};
+                    s_axi_awid <= s_axi_awid + 1;
+                    addr <= addr + 1;
+
+                    s_axi_wdata <= '0;
+                    s_axi_wlast <= 1;
+                    s_axi_wvalid <= 1;
                 end
             end
 

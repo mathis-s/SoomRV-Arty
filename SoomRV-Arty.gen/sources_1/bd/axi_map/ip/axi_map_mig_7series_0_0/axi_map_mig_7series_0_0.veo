@@ -72,7 +72,7 @@
   axi_map_mig_7series_0_0 u_axi_map_mig_7series_0_0 (
 
     // Memory interface ports
-    .ddr3_addr                      (ddr3_addr),  // output [13:0]		ddr3_addr
+    .ddr3_addr                      (ddr3_addr),  // output [14:0]		ddr3_addr
     .ddr3_ba                        (ddr3_ba),  // output [2:0]		ddr3_ba
     .ddr3_cas_n                     (ddr3_cas_n),  // output			ddr3_cas_n
     .ddr3_ck_n                      (ddr3_ck_n),  // output [0:0]		ddr3_ck_n
@@ -81,25 +81,30 @@
     .ddr3_ras_n                     (ddr3_ras_n),  // output			ddr3_ras_n
     .ddr3_reset_n                   (ddr3_reset_n),  // output			ddr3_reset_n
     .ddr3_we_n                      (ddr3_we_n),  // output			ddr3_we_n
-    .ddr3_dq                        (ddr3_dq),  // inout [15:0]		ddr3_dq
-    .ddr3_dqs_n                     (ddr3_dqs_n),  // inout [1:0]		ddr3_dqs_n
-    .ddr3_dqs_p                     (ddr3_dqs_p),  // inout [1:0]		ddr3_dqs_p
+    .ddr3_dq                        (ddr3_dq),  // inout [31:0]		ddr3_dq
+    .ddr3_dqs_n                     (ddr3_dqs_n),  // inout [3:0]		ddr3_dqs_n
+    .ddr3_dqs_p                     (ddr3_dqs_p),  // inout [3:0]		ddr3_dqs_p
     .init_calib_complete            (init_calib_complete),  // output			init_calib_complete
       
 	.ddr3_cs_n                      (ddr3_cs_n),  // output [0:0]		ddr3_cs_n
-    .ddr3_dm                        (ddr3_dm),  // output [1:0]		ddr3_dm
+    .ddr3_dm                        (ddr3_dm),  // output [3:0]		ddr3_dm
     .ddr3_odt                       (ddr3_odt),  // output [0:0]		ddr3_odt
     // Application interface ports
     .ui_clk                         (ui_clk),  // output			ui_clk
     .ui_clk_sync_rst                (ui_clk_sync_rst),  // output			ui_clk_sync_rst
+    .ui_addn_clk_0                  (ui_addn_clk_0),  // output			ui_addn_clk_0
+    .ui_addn_clk_1                  (ui_addn_clk_1),  // output			ui_addn_clk_1
+    .ui_addn_clk_2                  (ui_addn_clk_2),  // output			ui_addn_clk_2
+    .ui_addn_clk_3                  (ui_addn_clk_3),  // output			ui_addn_clk_3
+    .ui_addn_clk_4                  (ui_addn_clk_4),  // output			ui_addn_clk_4
     .mmcm_locked                    (mmcm_locked),  // output			mmcm_locked
     .aresetn                        (aresetn),  // input			aresetn
     .app_sr_active                  (app_sr_active),  // output			app_sr_active
     .app_ref_ack                    (app_ref_ack),  // output			app_ref_ack
     .app_zq_ack                     (app_zq_ack),  // output			app_zq_ack
     // Slave Interface Write Address Ports
-    .s_axi_awid                     (s_axi_awid),  // input [1:0]			s_axi_awid
-    .s_axi_awaddr                   (s_axi_awaddr),  // input [27:0]			s_axi_awaddr
+    .s_axi_awid                     (s_axi_awid),  // input [2:0]			s_axi_awid
+    .s_axi_awaddr                   (s_axi_awaddr),  // input [29:0]			s_axi_awaddr
     .s_axi_awlen                    (s_axi_awlen),  // input [7:0]			s_axi_awlen
     .s_axi_awsize                   (s_axi_awsize),  // input [2:0]			s_axi_awsize
     .s_axi_awburst                  (s_axi_awburst),  // input [1:0]			s_axi_awburst
@@ -116,13 +121,13 @@
     .s_axi_wvalid                   (s_axi_wvalid),  // input			s_axi_wvalid
     .s_axi_wready                   (s_axi_wready),  // output			s_axi_wready
     // Slave Interface Write Response Ports
-    .s_axi_bid                      (s_axi_bid),  // output [1:0]			s_axi_bid
+    .s_axi_bid                      (s_axi_bid),  // output [2:0]			s_axi_bid
     .s_axi_bresp                    (s_axi_bresp),  // output [1:0]			s_axi_bresp
     .s_axi_bvalid                   (s_axi_bvalid),  // output			s_axi_bvalid
     .s_axi_bready                   (s_axi_bready),  // input			s_axi_bready
     // Slave Interface Read Address Ports
-    .s_axi_arid                     (s_axi_arid),  // input [1:0]			s_axi_arid
-    .s_axi_araddr                   (s_axi_araddr),  // input [27:0]			s_axi_araddr
+    .s_axi_arid                     (s_axi_arid),  // input [2:0]			s_axi_arid
+    .s_axi_araddr                   (s_axi_araddr),  // input [29:0]			s_axi_araddr
     .s_axi_arlen                    (s_axi_arlen),  // input [7:0]			s_axi_arlen
     .s_axi_arsize                   (s_axi_arsize),  // input [2:0]			s_axi_arsize
     .s_axi_arburst                  (s_axi_arburst),  // input [1:0]			s_axi_arburst
@@ -133,16 +138,15 @@
     .s_axi_arvalid                  (s_axi_arvalid),  // input			s_axi_arvalid
     .s_axi_arready                  (s_axi_arready),  // output			s_axi_arready
     // Slave Interface Read Data Ports
-    .s_axi_rid                      (s_axi_rid),  // output [1:0]			s_axi_rid
+    .s_axi_rid                      (s_axi_rid),  // output [2:0]			s_axi_rid
     .s_axi_rdata                    (s_axi_rdata),  // output [127:0]			s_axi_rdata
     .s_axi_rresp                    (s_axi_rresp),  // output [1:0]			s_axi_rresp
     .s_axi_rlast                    (s_axi_rlast),  // output			s_axi_rlast
     .s_axi_rvalid                   (s_axi_rvalid),  // output			s_axi_rvalid
     .s_axi_rready                   (s_axi_rready),  // input			s_axi_rready
     // System Clock Ports
-    .sys_clk_i                       (sys_clk_i),
-    // Reference Clock Ports
-    .clk_ref_i                      (clk_ref_i),
+    .sys_clk_p                       (sys_clk_p),  // input				sys_clk_p
+    .sys_clk_n                       (sys_clk_n),  // input				sys_clk_n
     .sys_rst                        (sys_rst) // input sys_rst
     );
 

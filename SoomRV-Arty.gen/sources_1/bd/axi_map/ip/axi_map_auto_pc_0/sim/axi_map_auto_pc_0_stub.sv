@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -68,7 +68,7 @@ typedef bit bit_as_bool;
 module axi_map_auto_pc_0 (
   input bit_as_bool aclk,
   input bit_as_bool aresetn,
-  input bit [1 : 0] s_axi_awid,
+  input bit [2 : 0] s_axi_awid,
   input bit [11 : 0] s_axi_awaddr,
   input bit [7 : 0] s_axi_awlen,
   input bit [2 : 0] s_axi_awsize,
@@ -85,11 +85,11 @@ module axi_map_auto_pc_0 (
   input bit_as_bool s_axi_wlast,
   input bit_as_bool s_axi_wvalid,
   output bit_as_bool s_axi_wready,
-  output bit [1 : 0] s_axi_bid,
+  output bit [2 : 0] s_axi_bid,
   output bit [1 : 0] s_axi_bresp,
   output bit_as_bool s_axi_bvalid,
   input bit_as_bool s_axi_bready,
-  input bit [1 : 0] s_axi_arid,
+  input bit [2 : 0] s_axi_arid,
   input bit [11 : 0] s_axi_araddr,
   input bit [7 : 0] s_axi_arlen,
   input bit [2 : 0] s_axi_arsize,
@@ -101,7 +101,7 @@ module axi_map_auto_pc_0 (
   input bit [3 : 0] s_axi_arqos,
   input bit_as_bool s_axi_arvalid,
   output bit_as_bool s_axi_arready,
-  output bit [1 : 0] s_axi_rid,
+  output bit [2 : 0] s_axi_rid,
   output bit [31 : 0] s_axi_rdata,
   output bit [1 : 0] s_axi_rresp,
   output bit_as_bool s_axi_rlast,
@@ -137,7 +137,7 @@ module axi_map_auto_pc_0 (aclk,aresetn,s_axi_awid,s_axi_awaddr,s_axi_awlen,s_axi
 *);
   input bit aclk;
   input bit aresetn;
-  input bit [1 : 0] s_axi_awid;
+  input bit [2 : 0] s_axi_awid;
   input bit [11 : 0] s_axi_awaddr;
   input bit [7 : 0] s_axi_awlen;
   input bit [2 : 0] s_axi_awsize;
@@ -154,11 +154,11 @@ module axi_map_auto_pc_0 (aclk,aresetn,s_axi_awid,s_axi_awaddr,s_axi_awlen,s_axi
   input bit s_axi_wlast;
   input bit s_axi_wvalid;
   output wire s_axi_wready;
-  output wire [1 : 0] s_axi_bid;
+  output wire [2 : 0] s_axi_bid;
   output wire [1 : 0] s_axi_bresp;
   output wire s_axi_bvalid;
   input bit s_axi_bready;
-  input bit [1 : 0] s_axi_arid;
+  input bit [2 : 0] s_axi_arid;
   input bit [11 : 0] s_axi_araddr;
   input bit [7 : 0] s_axi_arlen;
   input bit [2 : 0] s_axi_arsize;
@@ -170,7 +170,7 @@ module axi_map_auto_pc_0 (aclk,aresetn,s_axi_awid,s_axi_awaddr,s_axi_awlen,s_axi
   input bit [3 : 0] s_axi_arqos;
   input bit s_axi_arvalid;
   output wire s_axi_arready;
-  output wire [1 : 0] s_axi_rid;
+  output wire [2 : 0] s_axi_rid;
   output wire [31 : 0] s_axi_rdata;
   output wire [1 : 0] s_axi_rresp;
   output wire s_axi_rlast;

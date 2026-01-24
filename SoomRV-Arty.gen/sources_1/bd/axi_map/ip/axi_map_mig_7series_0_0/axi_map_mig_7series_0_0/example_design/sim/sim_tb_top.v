@@ -92,12 +92,12 @@ module sim_tb_top;
                                      // # of memory Column Address bits.
    parameter CS_WIDTH              = 1;
                                      // # of unique CS outputs to memory.
-   parameter DM_WIDTH              = 2;
+   parameter DM_WIDTH              = 4;
                                      // # of DM (data mask)
-   parameter DQ_WIDTH              = 16;
+   parameter DQ_WIDTH              = 32;
                                      // # of DQ (data)
-   parameter DQS_WIDTH             = 2;
-   parameter DQS_CNT_WIDTH         = 1;
+   parameter DQS_WIDTH             = 4;
+   parameter DQS_CNT_WIDTH         = 2;
                                      // = ceil(log2(DQS_WIDTH))
    parameter DRAM_WIDTH            = 8;
                                      // # of DQ per DQS
@@ -106,9 +106,9 @@ module sim_tb_top;
                                      // # of Ranks.
    parameter ODT_WIDTH             = 1;
                                      // # of ODT outputs to memory.
-   parameter ROW_WIDTH             = 14;
+   parameter ROW_WIDTH             = 15;
                                      // # of memory Row Address bits.
-   parameter ADDR_WIDTH            = 28;
+   parameter ADDR_WIDTH            = 29;
                                      // # = RANK_WIDTH + BANK_WIDTH
                                      //     + ROW_WIDTH + COL_WIDTH;
                                      // Chip Select is always tied to low for
@@ -130,7 +130,7 @@ module sim_tb_top;
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 6000;
+   parameter CLKIN_PERIOD          = 5004;
                                      // Input Clock Period
 
 
@@ -164,7 +164,7 @@ module sim_tb_top;
    //***************************************************************************
    // System clock frequency parameters
    //***************************************************************************
-   parameter tCK                   = 3000;
+   parameter tCK                   = 1112;
                                      // memory tCK paramter.
                      // # = Clock Period in pS.
    parameter nCK_PER_CLK           = 4;
@@ -174,10 +174,10 @@ module sim_tb_top;
    //***************************************************************************
    // AXI4 Shim parameters
    //***************************************************************************
-   parameter C_S_AXI_ID_WIDTH              = 2;
+   parameter C_S_AXI_ID_WIDTH              = 3;
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
-   parameter C_S_AXI_ADDR_WIDTH            = 28;
+   parameter C_S_AXI_ADDR_WIDTH            = 30;
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
@@ -185,7 +185,7 @@ module sim_tb_top;
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.
-   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 0;
+   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 1;
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
 
@@ -238,6 +238,9 @@ module sim_tb_top;
 
 
   reg                     sys_clk_i;
+  wire                               sys_clk_p;
+  wire                               sys_clk_n;
+    
 
   reg clk_ref_i;
 
@@ -312,6 +315,8 @@ module sim_tb_top;
   always
     sys_clk_i = #(CLKIN_PERIOD/2.0) ~sys_clk_i;
 
+  assign sys_clk_p = sys_clk_i;
+  assign sys_clk_n = ~sys_clk_i;
 
   initial
     clk_ref_i = 1'b0;
@@ -495,9 +500,8 @@ module sim_tb_top;
      .ddr3_odt             (ddr3_odt_fpga),
     
      
-     .sys_clk_i            (sys_clk_i),
-    
-     .clk_ref_i            (clk_ref_i),
+     .sys_clk_p            (sys_clk_p),
+     .sys_clk_n            (sys_clk_n),
     
       .init_calib_complete (init_calib_complete),
       .tg_compare_error    (tg_compare_error),

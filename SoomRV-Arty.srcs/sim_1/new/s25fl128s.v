@@ -686,7 +686,7 @@ specify
         // Program Suspend/Program Resume Time
         specparam        tdevice_PRGSUSP           = 40e6;//
         // VCC (min) to CS# Low
-        specparam        tdevice_PU                = 3e8;//tPU
+        specparam        tdevice_PU                = 3e7;//tPU
         // PPB Erase Time
         specparam        tdevice_PPBERASE          = 15e9;//
         // Password Unlock Time
@@ -713,7 +713,7 @@ specify
         // Program Suspend/Program Resume Time
         specparam        tdevice_PRGSUSP           = 40e6;//
         // VCC (min) to CS# Low
-        specparam        tdevice_PU                = 3e8;//tPU
+        specparam        tdevice_PU                = 3e7;//tPU
         // PPB Erase Time
         specparam        tdevice_PPBERASE          = 15e9;//
         // Password Unlock Time
@@ -1022,6 +1022,7 @@ endspecify
            //  dd      - <dd> is byte to be written at Mem(aaaaaa++)
            // (aaaaaa is incremented at every load)
            $readmemh(mem_file_name,Mem);
+           $display("read SPI memory config file, first bytes %x %x %x %x", Mem[0], Mem[1], Mem[2], Mem[3]);
         end
 
         for (i=OTPLoAddr;i<=OTPHiAddr;i=i+1)
@@ -3194,7 +3195,7 @@ endspecify
                 else
                     next_state = IDLE;
             end
-            else 
+            else
             begin
                 case (current_state)
                     RESET_STATE :
@@ -3542,7 +3543,7 @@ endspecify
                     if (rising_edge_PDONE)
                         next_state = IDLE;
                     end
-										
+
                     NVDLR_PG :
                     begin
                     if (rising_edge_PDONE)

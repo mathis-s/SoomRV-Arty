@@ -69,11 +69,11 @@
 
 module axi_map_mig_7series_0_0 (
   // Inouts
-  inout [15:0]       ddr3_dq,
-  inout [1:0]        ddr3_dqs_n,
-  inout [1:0]        ddr3_dqs_p,
+  inout [31:0]       ddr3_dq,
+  inout [3:0]        ddr3_dqs_n,
+  inout [3:0]        ddr3_dqs_p,
   // Outputs
-  output [13:0]     ddr3_addr,
+  output [14:0]     ddr3_addr,
   output [2:0]        ddr3_ba,
   output            ddr3_ras_n,
   output            ddr3_cas_n,
@@ -83,24 +83,28 @@ module axi_map_mig_7series_0_0 (
   output [0:0]       ddr3_ck_n,
   output [0:0]       ddr3_cke,
   output [0:0]        ddr3_cs_n,
-  output [1:0]     ddr3_dm,
+  output [3:0]     ddr3_dm,
   output [0:0]       ddr3_odt,
   // Inputs
-  // Single-ended system clock
-  input             sys_clk_i,
-  // Single-ended iodelayctrl clk (reference clock)
-  input             clk_ref_i,
+  // Differential system clocks
+  input             sys_clk_p,
+  input             sys_clk_n,
   // user interface signals
   output            ui_clk,
   output            ui_clk_sync_rst,
+  output            ui_addn_clk_0,
+  output            ui_addn_clk_1,
+  output            ui_addn_clk_2,
+  output            ui_addn_clk_3,
+  output            ui_addn_clk_4,
   output            mmcm_locked,
   input         aresetn,
   output            app_sr_active,
   output            app_ref_ack,
   output            app_zq_ack,
   // Slave Interface Write Address Ports
-  input [1:0]           s_axi_awid,
-  input [27:0]         s_axi_awaddr,
+  input [2:0]           s_axi_awid,
+  input [29:0]         s_axi_awaddr,
   input [7:0]           s_axi_awlen,
   input [2:0]           s_axi_awsize,
   input [1:0]           s_axi_awburst,
@@ -118,12 +122,12 @@ module axi_map_mig_7series_0_0 (
   output            s_axi_wready,
   // Slave Interface Write Response Ports
   input         s_axi_bready,
-  output [1:0]          s_axi_bid,
+  output [2:0]          s_axi_bid,
   output [1:0]          s_axi_bresp,
   output            s_axi_bvalid,
   // Slave Interface Read Address Ports
-  input [1:0]           s_axi_arid,
-  input [27:0]         s_axi_araddr,
+  input [2:0]           s_axi_arid,
+  input [29:0]         s_axi_araddr,
   input [7:0]           s_axi_arlen,
   input [2:0]           s_axi_arsize,
   input [1:0]           s_axi_arburst,
@@ -135,7 +139,7 @@ module axi_map_mig_7series_0_0 (
   output            s_axi_arready,
   // Slave Interface Read Data Ports
   input         s_axi_rready,
-  output [1:0]          s_axi_rid,
+  output [2:0]          s_axi_rid,
   output [127:0]            s_axi_rdata,
   output [1:0]          s_axi_rresp,
   output            s_axi_rlast,
@@ -177,6 +181,11 @@ module axi_map_mig_7series_0_0 (
     // Application interface ports
     .ui_clk                         (ui_clk),
     .ui_clk_sync_rst                (ui_clk_sync_rst),
+    .ui_addn_clk_0                  (ui_addn_clk_0),
+    .ui_addn_clk_1                  (ui_addn_clk_1),
+    .ui_addn_clk_2                  (ui_addn_clk_2),
+    .ui_addn_clk_3                  (ui_addn_clk_3),
+    .ui_addn_clk_4                  (ui_addn_clk_4),
     .mmcm_locked                    (mmcm_locked),
     .aresetn                        (aresetn),
     .app_sr_active                  (app_sr_active),
@@ -225,9 +234,8 @@ module axi_map_mig_7series_0_0 (
     .s_axi_rvalid                   (s_axi_rvalid),
     .s_axi_rready                   (s_axi_rready),
     // System Clock Ports
-    .sys_clk_i                       (sys_clk_i),
-    // Reference Clock Ports
-    .clk_ref_i                      (clk_ref_i),
+    .sys_clk_p                       (sys_clk_p),
+    .sys_clk_n                       (sys_clk_n),
        .device_temp            (device_temp),
        `ifdef SKIP_CALIB
        .calib_tap_req                    (calib_tap_req),

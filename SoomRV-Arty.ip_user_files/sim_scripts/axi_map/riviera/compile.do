@@ -5,95 +5,88 @@ transcript on
 
 vlib work
 vlib riviera/xpm
-vlib riviera/generic_baseblocks_v2_1_1
+vlib riviera/generic_baseblocks_v2_1_2
 vlib riviera/axi_infrastructure_v1_1_0
-vlib riviera/axi_register_slice_v2_1_29
-vlib riviera/fifo_generator_v13_2_9
-vlib riviera/axi_data_fifo_v2_1_28
-vlib riviera/axi_crossbar_v2_1_30
+vlib riviera/axi_register_slice_v2_1_31
+vlib riviera/fifo_generator_v13_2_10
+vlib riviera/axi_data_fifo_v2_1_30
+vlib riviera/axi_crossbar_v2_1_32
 vlib riviera/xil_defaultlib
-vlib riviera/axi_clock_converter_v2_1_28
-vlib riviera/axi_protocol_converter_v2_1_29
-vlib riviera/lib_cdc_v1_0_2
-vlib riviera/proc_sys_reset_v5_0_14
-vlib riviera/xlconstant_v1_1_8
+vlib riviera/lib_cdc_v1_0_3
+vlib riviera/proc_sys_reset_v5_0_15
+vlib riviera/xlconstant_v1_1_9
+vlib riviera/xpm_cdc_gen_v1_0_4
+vlib riviera/jtag_axi
+vlib riviera/axi_protocol_converter_v2_1_31
+vlib riviera/axi_clock_converter_v2_1_30
+vlib riviera/blk_mem_gen_v8_4_8
+vlib riviera/axi_dwidth_converter_v2_1_31
 
 vmap xpm riviera/xpm
-vmap generic_baseblocks_v2_1_1 riviera/generic_baseblocks_v2_1_1
+vmap generic_baseblocks_v2_1_2 riviera/generic_baseblocks_v2_1_2
 vmap axi_infrastructure_v1_1_0 riviera/axi_infrastructure_v1_1_0
-vmap axi_register_slice_v2_1_29 riviera/axi_register_slice_v2_1_29
-vmap fifo_generator_v13_2_9 riviera/fifo_generator_v13_2_9
-vmap axi_data_fifo_v2_1_28 riviera/axi_data_fifo_v2_1_28
-vmap axi_crossbar_v2_1_30 riviera/axi_crossbar_v2_1_30
+vmap axi_register_slice_v2_1_31 riviera/axi_register_slice_v2_1_31
+vmap fifo_generator_v13_2_10 riviera/fifo_generator_v13_2_10
+vmap axi_data_fifo_v2_1_30 riviera/axi_data_fifo_v2_1_30
+vmap axi_crossbar_v2_1_32 riviera/axi_crossbar_v2_1_32
 vmap xil_defaultlib riviera/xil_defaultlib
-vmap axi_clock_converter_v2_1_28 riviera/axi_clock_converter_v2_1_28
-vmap axi_protocol_converter_v2_1_29 riviera/axi_protocol_converter_v2_1_29
-vmap lib_cdc_v1_0_2 riviera/lib_cdc_v1_0_2
-vmap proc_sys_reset_v5_0_14 riviera/proc_sys_reset_v5_0_14
-vmap xlconstant_v1_1_8 riviera/xlconstant_v1_1_8
+vmap lib_cdc_v1_0_3 riviera/lib_cdc_v1_0_3
+vmap proc_sys_reset_v5_0_15 riviera/proc_sys_reset_v5_0_15
+vmap xlconstant_v1_1_9 riviera/xlconstant_v1_1_9
+vmap xpm_cdc_gen_v1_0_4 riviera/xpm_cdc_gen_v1_0_4
+vmap jtag_axi riviera/jtag_axi
+vmap axi_protocol_converter_v2_1_31 riviera/axi_protocol_converter_v2_1_31
+vmap axi_clock_converter_v2_1_30 riviera/axi_clock_converter_v2_1_30
+vmap blk_mem_gen_v8_4_8 riviera/blk_mem_gen_v8_4_8
+vmap axi_dwidth_converter_v2_1_31 riviera/axi_dwidth_converter_v2_1_31
 
-vlog -work xpm  -incr  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"/opt/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
-"/opt/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+vlog -work xpm  -incr  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"/opt/Xilinx/Vivado/2024.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
+"/opt/Xilinx/Vivado/2024.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  -incr \
-"/opt/Xilinx/Vivado/2023.2/data/ip/xpm/xpm_VCOMP.vhd" \
+"/opt/Xilinx/Vivado/2024.1/data/ip/xpm/xpm_VCOMP.vhd" \
 
-vlog -work generic_baseblocks_v2_1_1  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/10ab/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
+vlog -work generic_baseblocks_v2_1_2  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/0c28/hdl/generic_baseblocks_v2_1_vl_rfs.v" \
 
-vlog -work axi_infrastructure_v1_1_0  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
+vlog -work axi_infrastructure_v1_1_0  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
 "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v" \
 
-vlog -work axi_register_slice_v2_1_29  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ff9f/hdl/axi_register_slice_v2_1_vl_rfs.v" \
+vlog -work axi_register_slice_v2_1_31  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/92b2/hdl/axi_register_slice_v2_1_vl_rfs.v" \
 
-vlog -work fifo_generator_v13_2_9  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ac72/simulation/fifo_generator_vlog_beh.v" \
+vlog -work fifo_generator_v13_2_10  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1443/simulation/fifo_generator_vlog_beh.v" \
 
-vcom -work fifo_generator_v13_2_9 -93  -incr \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ac72/hdl/fifo_generator_v13_2_rfs.vhd" \
+vcom -work fifo_generator_v13_2_10 -93  -incr \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1443/hdl/fifo_generator_v13_2_rfs.vhd" \
 
-vlog -work fifo_generator_v13_2_9  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ac72/hdl/fifo_generator_v13_2_rfs.v" \
+vlog -work fifo_generator_v13_2_10  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1443/hdl/fifo_generator_v13_2_rfs.v" \
 
-vlog -work axi_data_fifo_v2_1_28  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/279e/hdl/axi_data_fifo_v2_1_vl_rfs.v" \
+vlog -work axi_data_fifo_v2_1_30  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/9692/hdl/axi_data_fifo_v2_1_vl_rfs.v" \
 
-vlog -work axi_crossbar_v2_1_30  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/fb47/hdl/axi_crossbar_v2_1_vl_rfs.v" \
+vlog -work axi_crossbar_v2_1_32  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/e9d8/hdl/axi_crossbar_v2_1_vl_rfs.v" \
 
-vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
+vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
 "../../../bd/axi_map/ip/axi_map_xbar_0/sim/axi_map_xbar_0.v" \
-"../../../bd/axi_map/ip/axi_map_s00_data_fifo_0/sim/axi_map_s00_data_fifo_0.v" \
 
-vlog -work axi_clock_converter_v2_1_28  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/769c/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+vcom -work lib_cdc_v1_0_3 -93  -incr \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/2a4f/hdl/lib_cdc_v1_0_rfs.vhd" \
 
-vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../bd/axi_map/ip/axi_map_auto_cc_0/sim/axi_map_auto_cc_0.v" \
-
-vlog -work axi_protocol_converter_v2_1_29  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/a63f/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
-
-vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../bd/axi_map/ip/axi_map_auto_pc_0/sim/axi_map_auto_pc_0.v" \
-"../../../bd/axi_map/ip/axi_map_clk_wiz_0_1/axi_map_clk_wiz_0_1_clk_wiz.v" \
-"../../../bd/axi_map/ip/axi_map_clk_wiz_0_1/axi_map_clk_wiz_0_1.v" \
-
-vcom -work lib_cdc_v1_0_2 -93  -incr \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd" \
-
-vcom -work proc_sys_reset_v5_0_14 -93  -incr \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/408c/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
+vcom -work proc_sys_reset_v5_0_15 -93  -incr \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/3a26/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
 
 vcom -work xil_defaultlib -93  -incr \
 "../../../bd/axi_map/ip/axi_map_proc_sys_reset_0_1/sim/axi_map_proc_sys_reset_0_1.vhd" \
 
-vlog -work xlconstant_v1_1_8  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
-"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/d390/hdl/xlconstant_v1_1_vl_rfs.v" \
+vlog -work xlconstant_v1_1_9  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v" \
 
-vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" -l xpm -l generic_baseblocks_v2_1_1 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_29 -l fifo_generator_v13_2_9 -l axi_data_fifo_v2_1_28 -l axi_crossbar_v2_1_30 -l xil_defaultlib -l axi_clock_converter_v2_1_28 -l axi_protocol_converter_v2_1_29 -l lib_cdc_v1_0_2 -l proc_sys_reset_v5_0_14 -l xlconstant_v1_1_8 \
+vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
 "../../../bd/axi_map/ip/axi_map_xlconstant_0_0/sim/axi_map_xlconstant_0_0.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/phy/mig_7series_v4_2_poc_tap_base.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/phy/mig_7series_v4_2_ddr_skip_calib_tap.v" \
@@ -197,6 +190,39 @@ vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/axi_map_mig_7series_0_0_mig_sim.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/axi_map_mig_7series_0_0.v" \
 "../../../bd/axi_map/ip/axi_map_UART8250Lite_0_0/sim/axi_map_UART8250Lite_0_0.v" \
+
+vcom -work xil_defaultlib -93  -incr \
+"../../../bd/axi_map/ip/axi_map_proc_sys_reset_1_0/sim/axi_map_proc_sys_reset_1_0.vhd" \
+
+vlog -work xpm_cdc_gen_v1_0_4  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/745f/hdl/xpm_cdc_gen_v1_0_vl_rfs.v" \
+
+vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../bd/axi_map/ip/axi_map_xpm_cdc_gen_0_0/sim/axi_map_xpm_cdc_gen_0_0.v" \
+
+vlog -work jtag_axi  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/bb95/hdl/jtag_axi_v1_2_rfs.v" \
+
+vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../bd/axi_map/ip/axi_map_jtag_axi_0_0/sim/axi_map_jtag_axi_0_0.v" \
+"../../../bd/axi_map/ip/axi_map_s00_data_fifo_0/sim/axi_map_s00_data_fifo_0.v" \
+
+vlog -work axi_protocol_converter_v2_1_31  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/3c06/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
+
+vlog -work axi_clock_converter_v2_1_30  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/80bf/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
+
+vlog -work blk_mem_gen_v8_4_8  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/09bd/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work axi_dwidth_converter_v2_1_31  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/14b9/hdl/axi_dwidth_converter_v2_1_vl_rfs.v" \
+
+vlog -work xil_defaultlib  -incr -v2k5  +define+den2048Mb= "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" "+incdir+../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" -l xpm -l generic_baseblocks_v2_1_2 -l axi_infrastructure_v1_1_0 -l axi_register_slice_v2_1_31 -l fifo_generator_v13_2_10 -l axi_data_fifo_v2_1_30 -l axi_crossbar_v2_1_32 -l xil_defaultlib -l lib_cdc_v1_0_3 -l proc_sys_reset_v5_0_15 -l xlconstant_v1_1_9 -l xpm_cdc_gen_v1_0_4 -l jtag_axi -l axi_protocol_converter_v2_1_31 -l axi_clock_converter_v2_1_30 -l blk_mem_gen_v8_4_8 -l axi_dwidth_converter_v2_1_31 \
+"../../../bd/axi_map/ip/axi_map_auto_us_df_0/sim/axi_map_auto_us_df_0.v" \
+"../../../bd/axi_map/ip/axi_map_auto_cc_0/sim/axi_map_auto_cc_0.v" \
+"../../../bd/axi_map/ip/axi_map_auto_pc_0/sim/axi_map_auto_pc_0.v" \
 "../../../bd/axi_map/sim/axi_map.v" \
 
 vlog -work xil_defaultlib \

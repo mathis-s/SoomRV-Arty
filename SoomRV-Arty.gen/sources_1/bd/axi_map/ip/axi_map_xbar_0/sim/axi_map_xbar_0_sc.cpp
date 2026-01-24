@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -61,9 +61,9 @@ axi_map_xbar_0_sc::axi_map_xbar_0_sc(const sc_core::sc_module_name& nm) : sc_cor
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_NUM_SLAVE_SLOTS", "1");
+    model_param_props.addLong("C_NUM_SLAVE_SLOTS", "2");
     model_param_props.addLong("C_NUM_MASTER_SLOTS", "2");
-    model_param_props.addLong("C_AXI_ID_WIDTH", "2");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "3");
     model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");
     model_param_props.addLong("C_AXI_DATA_WIDTH", "128");
     model_param_props.addLong("C_AXI_PROTOCOL", "0");
@@ -76,20 +76,20 @@ axi_map_xbar_0_sc::axi_map_xbar_0_sc(const sc_core::sc_module_name& nm) : sc_cor
     model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
     model_param_props.addLong("C_R_REGISTER", "0");
     model_param_props.addLong("C_CONNECTIVITY_MODE", "1");
-    model_param_props.addString("C_FAMILY", "artix7");
+    model_param_props.addString("C_FAMILY", "kintex7");
     model_param_props.addBitString("C_M_AXI_BASE_ADDR", "00000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000", 128);
-    model_param_props.addBitString("C_M_AXI_ADDR_WIDTH", "0000000000000000000000000000110000000000000000000000000000011100", 64);
-    model_param_props.addBitString("C_S_AXI_BASE_ID", "00000000000000000000000000000000", 32);
-    model_param_props.addBitString("C_S_AXI_THREAD_ID_WIDTH", "00000000000000000000000000000010", 32);
-    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "0000000000000000000000000000000100000000000000000000000000000001", 64);
-    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "0000000000000000000000000000000100000000000000000000000000000001", 64);
-    model_param_props.addBitString("C_S_AXI_SINGLE_THREAD", "00000000000000000000000000000000", 32);
-    model_param_props.addBitString("C_S_AXI_WRITE_ACCEPTANCE", "00000000000000000000000000100000", 32);
-    model_param_props.addBitString("C_S_AXI_READ_ACCEPTANCE", "00000000000000000000000000100000", 32);
+    model_param_props.addBitString("C_M_AXI_ADDR_WIDTH", "0000000000000000000000000000110000000000000000000000000000011110", 64);
+    model_param_props.addBitString("C_S_AXI_BASE_ID", "0000000000000000000000000000010000000000000000000000000000000000", 64);
+    model_param_props.addBitString("C_S_AXI_THREAD_ID_WIDTH", "0000000000000000000000000000000000000000000000000000000000000010", 64);
+    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "0000000000000000000000000000001100000000000000000000000000000011", 64);
+    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "0000000000000000000000000000001100000000000000000000000000000011", 64);
+    model_param_props.addBitString("C_S_AXI_SINGLE_THREAD", "0000000000000000000000000000000000000000000000000000000000000000", 64);
+    model_param_props.addBitString("C_S_AXI_WRITE_ACCEPTANCE", "0000000000000000000000000000010000000000000000000000000000100000", 64);
+    model_param_props.addBitString("C_S_AXI_READ_ACCEPTANCE", "0000000000000000000000000000010000000000000000000000000000100000", 64);
     model_param_props.addBitString("C_M_AXI_WRITE_ISSUING", "0000000000000000000000000010000000000000000000000000000000100000", 64);
     model_param_props.addBitString("C_M_AXI_READ_ISSUING", "0000000000000000000000000010000000000000000000000000000000100000", 64);
-    model_param_props.addBitString("C_S_AXI_ARB_PRIORITY", "00000000000000000000000000000000", 32);
-    model_param_props.addBitString("C_M_AXI_SECURE", "00000000000000000000000000000000", 32);
+    model_param_props.addBitString("C_S_AXI_ARB_PRIORITY", "0000000000000000000000000000000000000000000000000000000000000000", 64);
+    model_param_props.addBitString("C_M_AXI_SECURE", "0000000000000000000000000000000000000000000000000000000000000000", 64);
     model_param_props.addString("COMPONENT_NAME", "axi_map_xbar_0");
 
   mp_impl = new axi_crossbar("inst", model_param_props);
@@ -99,6 +99,8 @@ axi_map_xbar_0_sc::axi_map_xbar_0_sc(const sc_core::sc_module_name& nm) : sc_cor
   target_0_wr_socket = mp_impl->target_0_wr_socket;
   initiator_0_rd_socket = mp_impl->initiator_0_rd_socket;
   initiator_0_wr_socket = mp_impl->initiator_0_wr_socket;
+  target_1_rd_socket = mp_impl->target_1_rd_socket;
+  target_1_wr_socket = mp_impl->target_1_wr_socket;
   initiator_1_rd_socket = mp_impl->initiator_1_rd_socket;
   initiator_1_wr_socket = mp_impl->initiator_1_wr_socket;
 }

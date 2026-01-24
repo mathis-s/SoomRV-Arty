@@ -1,10 +1,5 @@
-verilog xil_defaultlib --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/c2c6" \
+verilog xil_defaultlib --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/ec67/hdl" --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/814a/hdl/verilog" --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_map/ipshared/1017/hdl/verilog" \
 "../../../bd/axi_map/ip/axi_map_xbar_0/sim/axi_map_xbar_0.v" \
-"../../../bd/axi_map/ip/axi_map_s00_data_fifo_0/sim/axi_map_s00_data_fifo_0.v" \
-"../../../bd/axi_map/ip/axi_map_auto_cc_0/sim/axi_map_auto_cc_0.v" \
-"../../../bd/axi_map/ip/axi_map_auto_pc_0/sim/axi_map_auto_pc_0.v" \
-"../../../bd/axi_map/ip/axi_map_clk_wiz_0_1/axi_map_clk_wiz_0_1_clk_wiz.v" \
-"../../../bd/axi_map/ip/axi_map_clk_wiz_0_1/axi_map_clk_wiz_0_1.v" \
 "../../../bd/axi_map/ip/axi_map_xlconstant_0_0/sim/axi_map_xlconstant_0_0.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/phy/mig_7series_v4_2_poc_tap_base.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/phy/mig_7series_v4_2_ddr_skip_calib_tap.v" \
@@ -108,6 +103,12 @@ verilog xil_defaultlib --include "../../../../SoomRV-Arty.gen/sources_1/bd/axi_m
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/axi_map_mig_7series_0_0_mig_sim.v" \
 "../../../bd/axi_map/ip/axi_map_mig_7series_0_0/axi_map_mig_7series_0_0/user_design/rtl/axi_map_mig_7series_0_0.v" \
 "../../../bd/axi_map/ip/axi_map_UART8250Lite_0_0/sim/axi_map_UART8250Lite_0_0.v" \
+"../../../bd/axi_map/ip/axi_map_xpm_cdc_gen_0_0/sim/axi_map_xpm_cdc_gen_0_0.v" \
+"../../../bd/axi_map/ip/axi_map_jtag_axi_0_0/sim/axi_map_jtag_axi_0_0.v" \
+"../../../bd/axi_map/ip/axi_map_s00_data_fifo_0/sim/axi_map_s00_data_fifo_0.v" \
+"../../../bd/axi_map/ip/axi_map_auto_us_df_0/sim/axi_map_auto_us_df_0.v" \
+"../../../bd/axi_map/ip/axi_map_auto_cc_0/sim/axi_map_auto_cc_0.v" \
+"../../../bd/axi_map/ip/axi_map_auto_pc_0/sim/axi_map_auto_pc_0.v" \
 "../../../bd/axi_map/sim/axi_map.v" \
 
 verilog xil_defaultlib "glbl.v"

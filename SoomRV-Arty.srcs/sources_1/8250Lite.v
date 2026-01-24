@@ -10,23 +10,23 @@ module UART8250Lite
     input[2:0] s_axi_awsize,
     input s_axi_awvalid,
     output wire s_axi_awready,
-    
+
     // write stream
     input[127:0] s_axi_wdata,
     input[15:0] s_axi_wstrb,
     input s_axi_wvalid,
     output wire s_axi_wready,
-    
+
     // write response
     input s_axi_bready,
     output reg s_axi_bvalid,
-    
+
     // read request
     input[11:0] s_axi_araddr,
     input[2:0] s_axi_arsize,
     input s_axi_arvalid,
     output wire s_axi_arready,
-    
+
     // read stream
     input s_axi_rready,
     output reg[127:0] s_axi_rdata,
@@ -39,7 +39,7 @@ module UART8250Lite
 reg wAddrValid;
 reg wDataValid;
 reg[11:0] waddr;
-reg[7:0] wdata; 
+reg[7:0] wdata;
 
 assign s_axi_awready = !s_axi_bvalid && !wAddrValid;
 assign s_axi_wready = !s_axi_bvalid && !wDataValid;
@@ -55,10 +55,10 @@ Uart uart
 (
     .reset_i(!aresetn),
     .clock_i(clk),
-    .clock_divider_i(362),
+    .clock_divider_i(43),
     .serial_i(UART_rx),
     .serial_o(UART_tx),
-    
+
     .data_i(uartWrData),
     .data_o(uartRdData),
 
@@ -79,7 +79,7 @@ FIFO#(8, 64, 0, 0) txFIFO
 (
     .clk(clk),
     .rst(!aresetn),
-    
+
     .free(txFIFO_free),
     .IN_valid(txFIFOinValid),
     .IN_data(wdata),
@@ -97,7 +97,7 @@ FIFO#(8, 64, 0, 0) rxFIFO
 (
     .clk(clk),
     .rst(!aresetn),
-    
+
     .free(),
     .IN_valid(uartRdValid),
     .IN_data(uartRdData),
@@ -110,7 +110,7 @@ FIFO#(8, 64, 0, 0) rxFIFO
 
 
 always@(posedge clk) begin
-    
+
     rxFIFOAck <= 0;
     if (!aresetn) begin
         s_axi_bvalid <= 0;
@@ -138,7 +138,7 @@ always@(posedge clk) begin
         end
 
         if (s_axi_arvalid && s_axi_arready) begin
-            
+
             s_axi_rdata <= 0;
 
             if (s_axi_araddr == 0) begin

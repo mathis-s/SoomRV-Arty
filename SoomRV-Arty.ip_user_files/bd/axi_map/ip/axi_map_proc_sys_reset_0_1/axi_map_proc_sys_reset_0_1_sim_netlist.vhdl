@@ -1,15 +1,15 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
--- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
--- Date        : Sat Nov 18 12:50:41 2023
+-- Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+-- Date        : Sun Nov  3 13:45:33 2024
 -- Host        : m-desktop running 64-bit Manjaro Linux
--- Command     : write_vhdl -force -mode funcsim -rename_top axi_map_proc_sys_reset_0_1 -prefix
---               axi_map_proc_sys_reset_0_1_ axi_map_proc_sys_reset_0_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               SoomRV-Arty.gen/sources_1/bd/axi_map/ip/axi_map_proc_sys_reset_0_1/axi_map_proc_sys_reset_0_1_sim_netlist.vhdl
 -- Design      : axi_map_proc_sys_reset_0_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a100tcsg324-1
+-- Device      : xc7k325tffg900-2
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -26,6 +26,8 @@ entity axi_map_proc_sys_reset_0_1_cdc_sync is
     aux_reset_in : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of axi_map_proc_sys_reset_0_1_cdc_sync : entity is "cdc_sync";
 end axi_map_proc_sys_reset_0_1_cdc_sync;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1_cdc_sync is
@@ -237,6 +239,8 @@ entity axi_map_proc_sys_reset_0_1_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of axi_map_proc_sys_reset_0_1_upcnt_n : entity is "upcnt_n";
 end axi_map_proc_sys_reset_0_1_upcnt_n;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1_upcnt_n is
@@ -401,6 +405,8 @@ entity axi_map_proc_sys_reset_0_1_lpf is
     ext_reset_in : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of axi_map_proc_sys_reset_0_1_lpf : entity is "lpf";
 end axi_map_proc_sys_reset_0_1_lpf;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1_lpf is
@@ -589,6 +595,8 @@ entity axi_map_proc_sys_reset_0_1_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of axi_map_proc_sys_reset_0_1_sequence_psr : entity is "sequence_psr";
 end axi_map_proc_sys_reset_0_1_sequence_psr;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1_sequence_psr is
@@ -907,7 +915,7 @@ entity axi_map_proc_sys_reset_0_1_proc_sys_reset is
     bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 1 )
   );
   attribute C_AUX_RESET_HIGH : string;
   attribute C_AUX_RESET_HIGH of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is "1'b1";
@@ -918,15 +926,17 @@ entity axi_map_proc_sys_reset_0_1_proc_sys_reset is
   attribute C_EXT_RST_WIDTH : integer;
   attribute C_EXT_RST_WIDTH of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 4;
   attribute C_FAMILY : string;
-  attribute C_FAMILY of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is "artix7";
+  attribute C_FAMILY of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is "kintex7";
   attribute C_NUM_BUS_RST : integer;
   attribute C_NUM_BUS_RST of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
   attribute C_NUM_INTERCONNECT_ARESETN : integer;
   attribute C_NUM_INTERCONNECT_ARESETN of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_ARESETN : integer;
-  attribute C_NUM_PERP_ARESETN of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
+  attribute C_NUM_PERP_ARESETN of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 2;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is 1;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of axi_map_proc_sys_reset_0_1_proc_sys_reset : entity is "proc_sys_reset";
 end axi_map_proc_sys_reset_0_1_proc_sys_reset;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1_proc_sys_reset is
@@ -939,6 +949,7 @@ architecture STRUCTURE of axi_map_proc_sys_reset_0_1_proc_sys_reset is
   attribute box_type : string;
   attribute box_type of \ACTIVE_LOW_BSR_OUT_DFF[0].FDRE_BSR_N\ : label is "PRIMITIVE";
   attribute box_type of \ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N\ : label is "PRIMITIVE";
+  attribute box_type of \ACTIVE_LOW_PR_OUT_DFF[1].FDRE_PER_N\ : label is "PRIMITIVE";
   attribute box_type of \BSR_OUT_DFF[0].FDRE_BSR\ : label is "PRIMITIVE";
   attribute box_type of FDRE_inst : label is "PRIMITIVE";
   attribute box_type of \PR_OUT_DFF[0].FDRE_PER\ : label is "PRIMITIVE";
@@ -969,6 +980,20 @@ begin
       CE => '1',
       D => SEQ_n_4,
       Q => peripheral_aresetn(0),
+      R => '0'
+    );
+\ACTIVE_LOW_PR_OUT_DFF[1].FDRE_PER_N\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0',
+      IS_C_INVERTED => '0',
+      IS_D_INVERTED => '0',
+      IS_R_INVERTED => '0'
+    )
+        port map (
+      C => slowest_sync_clk,
+      CE => '1',
+      D => SEQ_n_4,
+      Q => peripheral_aresetn(1),
       R => '0'
     );
 \BSR_OUT_DFF[0].FDRE_BSR\: unisim.vcomponents.FDRE
@@ -1048,7 +1073,7 @@ entity axi_map_proc_sys_reset_0_1 is
     bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
     interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 1 )
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of axi_map_proc_sys_reset_0_1 : entity is true;
@@ -1057,7 +1082,7 @@ entity axi_map_proc_sys_reset_0_1 is
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of axi_map_proc_sys_reset_0_1 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of axi_map_proc_sys_reset_0_1 : entity is "proc_sys_reset,Vivado 2023.2";
+  attribute x_core_info of axi_map_proc_sys_reset_0_1 : entity is "proc_sys_reset,Vivado 2024.1";
 end axi_map_proc_sys_reset_0_1;
 
 architecture STRUCTURE of axi_map_proc_sys_reset_0_1 is
@@ -1070,13 +1095,13 @@ architecture STRUCTURE of axi_map_proc_sys_reset_0_1 is
   attribute C_EXT_RST_WIDTH : integer;
   attribute C_EXT_RST_WIDTH of U0 : label is 4;
   attribute C_FAMILY : string;
-  attribute C_FAMILY of U0 : label is "artix7";
+  attribute C_FAMILY of U0 : label is "kintex7";
   attribute C_NUM_BUS_RST : integer;
   attribute C_NUM_BUS_RST of U0 : label is 1;
   attribute C_NUM_INTERCONNECT_ARESETN : integer;
   attribute C_NUM_INTERCONNECT_ARESETN of U0 : label is 1;
   attribute C_NUM_PERP_ARESETN : integer;
-  attribute C_NUM_PERP_ARESETN of U0 : label is 1;
+  attribute C_NUM_PERP_ARESETN of U0 : label is 2;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of U0 : label is 1;
   attribute x_interface_info : string;
@@ -1090,7 +1115,7 @@ architecture STRUCTURE of axi_map_proc_sys_reset_0_1 is
   attribute x_interface_info of mb_reset : signal is "xilinx.com:signal:reset:1.0 mb_rst RST";
   attribute x_interface_parameter of mb_reset : signal is "XIL_INTERFACENAME mb_rst, POLARITY ACTIVE_HIGH, TYPE PROCESSOR, INSERT_VIP 0";
   attribute x_interface_info of slowest_sync_clk : signal is "xilinx.com:signal:clock:1.0 clock CLK";
-  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 41666666, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
+  attribute x_interface_parameter of slowest_sync_clk : signal is "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 49944440, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN axi_map_mig_7series_0_0_ui_clk, INSERT_VIP 0";
   attribute x_interface_info of bus_struct_reset : signal is "xilinx.com:signal:reset:1.0 bus_struct_reset RST";
   attribute x_interface_parameter of bus_struct_reset : signal is "XIL_INTERFACENAME bus_struct_reset, POLARITY ACTIVE_HIGH, TYPE INTERCONNECT, INSERT_VIP 0";
   attribute x_interface_info of interconnect_aresetn : signal is "xilinx.com:signal:reset:1.0 interconnect_low_rst RST";
@@ -1109,7 +1134,7 @@ U0: entity work.axi_map_proc_sys_reset_0_1_proc_sys_reset
       interconnect_aresetn(0) => interconnect_aresetn(0),
       mb_debug_sys_rst => mb_debug_sys_rst,
       mb_reset => mb_reset,
-      peripheral_aresetn(0) => peripheral_aresetn(0),
+      peripheral_aresetn(0 to 1) => peripheral_aresetn(0 to 1),
       peripheral_reset(0) => peripheral_reset(0),
       slowest_sync_clk => slowest_sync_clk
     );

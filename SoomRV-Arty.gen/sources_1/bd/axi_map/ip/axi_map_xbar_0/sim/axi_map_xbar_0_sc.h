@@ -2,7 +2,7 @@
 #define IP_AXI_MAP_XBAR_0_SC_H_
 
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -80,6 +80,8 @@ public:
   xtlm::xtlm_aximm_target_socket* target_0_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_0_rd_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_0_wr_socket;
+  xtlm::xtlm_aximm_target_socket* target_1_rd_socket;
+  xtlm::xtlm_aximm_target_socket* target_1_wr_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_1_rd_socket;
   xtlm::xtlm_aximm_initiator_socket* initiator_1_wr_socket;
 

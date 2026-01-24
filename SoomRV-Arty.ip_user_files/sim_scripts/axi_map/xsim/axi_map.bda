@@ -208,8 +208,26 @@
             },
             "V4": {
                 "VT": "AC",
+                "BA": "0x10000000",
+                "HA": "0x10000FFF",
+                "BP": "C_BASEADDR",
+                "HP": "C_HIGHADDR",
+                "MA": "Data",
+                "MX": "/jtag_axi_0",
+                "MI": "M_AXI",
+                "MS": "SEG_UART8250Lite_0_reg0",
+                "MV": "xilinx.com:ip:jtag_axi:1.2",
+                "SX": "/UART8250Lite_0",
+                "SI": "s_axi",
+                "SS": "reg0",
+                "SV": "xilinx.com:module_ref:UART8250Lite:1.0",
+                "TM": "both",
+                "TU": "register"
+            },
+            "V5": {
+                "VT": "AC",
                 "BA": "0x80000000",
-                "HA": "0x8FFFFFFF",
+                "HA": "0xBFFFFFFF",
                 "BP": "C_BASEADDR",
                 "HP": "C_HIGHADDR",
                 "MA": "S00_AXI_0",
@@ -217,6 +235,25 @@
                 "MI": "S00_AXI_0",
                 "MS": "SEG_mig_7series_0_memaddr",
                 "MV": ":::",
+                "SX": "/mig_7series_0",
+                "SI": "S_AXI",
+                "MM": "memmap",
+                "SS": "memaddr",
+                "SV": "xilinx.com:ip:mig_7series:4.2",
+                "TM": "both",
+                "TU": "memory"
+            },
+            "V6": {
+                "VT": "AC",
+                "BA": "0x80000000",
+                "HA": "0xBFFFFFFF",
+                "BP": "C_BASEADDR",
+                "HP": "C_HIGHADDR",
+                "MA": "Data",
+                "MX": "/jtag_axi_0",
+                "MI": "M_AXI",
+                "MS": "SEG_mig_7series_0_memaddr",
+                "MV": "xilinx.com:ip:jtag_axi:1.2",
                 "SX": "/mig_7series_0",
                 "SI": "S_AXI",
                 "MM": "memmap",
@@ -242,6 +279,16 @@
             },
             {
                 "src": "V4",
+                "trg": "V2",
+                "EH": "2"
+            },
+            {
+                "src": "V5",
+                "trg": "V2",
+                "EH": "2"
+            },
+            {
+                "src": "V6",
                 "trg": "V2",
                 "EH": "2"
             }

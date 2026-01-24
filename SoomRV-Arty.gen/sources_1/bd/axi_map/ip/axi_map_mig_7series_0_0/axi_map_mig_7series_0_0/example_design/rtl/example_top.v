@@ -96,7 +96,7 @@ module example_top #
                                      // # of unique CS outputs per rank for phy
    parameter CKE_WIDTH             = 1,
                                      // # of CKE outputs to memory.
-   parameter DM_WIDTH              = 2,
+   parameter DM_WIDTH              = 4,
                                      // # of DM (data mask)
    parameter ODT_WIDTH             = 1,
                                      // # of ODT outputs to memory.
@@ -106,22 +106,22 @@ module example_top #
                                      // # of memory Column Address bits.
    parameter CS_WIDTH              = 1,
                                      // # of unique CS outputs to memory.
-   parameter DQ_WIDTH              = 16,
+   parameter DQ_WIDTH              = 32,
                                      // # of DQ (data)
-   parameter DQS_WIDTH             = 2,
-   parameter DQS_CNT_WIDTH         = 1,
+   parameter DQS_WIDTH             = 4,
+   parameter DQS_CNT_WIDTH         = 2,
                                      // = ceil(log2(DQS_WIDTH))
    parameter DRAM_WIDTH            = 8,
                                      // # of DQ per DQS
    parameter ECC                   = "OFF",
    parameter ECC_TEST              = "OFF",
    //parameter nBANK_MACHS           = 4,
-   parameter nBANK_MACHS           = 2,
+   parameter nBANK_MACHS           = 4,
    parameter RANKS                 = 1,
                                      // # of Ranks.
-   parameter ROW_WIDTH             = 14,
+   parameter ROW_WIDTH             = 15,
                                      // # of memory Row Address bits.
-   parameter ADDR_WIDTH            = 28,
+   parameter ADDR_WIDTH            = 29,
                                      // # = RANK_WIDTH + BANK_WIDTH
                                      //     + ROW_WIDTH + COL_WIDTH;
                                      // Chip Select is always tied to low for
@@ -143,28 +143,54 @@ module example_top #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 6000,
+   parameter CLKIN_PERIOD          = 5004,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 8,
+   parameter CLKFBOUT_MULT         = 9,
                                      // write PLL VCO multiplier
    parameter DIVCLK_DIVIDE         = 1,
                                      // write PLL VCO divisor
-   parameter CLKOUT0_PHASE         = 0.0,
+   parameter CLKOUT0_PHASE         = 337.5,
                                      // Phase for PLL output clock (CLKOUT0)
    parameter CLKOUT0_DIVIDE        = 2,
                                      // VCO output divisor for PLL output clock (CLKOUT0)
-   parameter CLKOUT1_DIVIDE        = 4,
+   parameter CLKOUT1_DIVIDE        = 2,
                                      // VCO output divisor for PLL output clock (CLKOUT1)
-   parameter CLKOUT2_DIVIDE        = 64,
+   parameter CLKOUT2_DIVIDE        = 32,
                                      // VCO output divisor for PLL output clock (CLKOUT2)
-   parameter CLKOUT3_DIVIDE        = 16,
+   parameter CLKOUT3_DIVIDE        = 8,
                                      // VCO output divisor for PLL output clock (CLKOUT3)
-   parameter MMCM_VCO              = 666,
+   parameter MMCM_VCO              = 899,
                                      // Max Freq (MHz) of MMCM VCO
-   parameter MMCM_MULT_F           = 8,
+   parameter MMCM_MULT_F           = 4,
                                      // write MMCM VCO multiplier
    parameter MMCM_DIVCLK_DIVIDE    = 1,
                                      // write MMCM VCO divisor
+   parameter MMCM_CLKOUT0_EN       = "TRUE",
+                                     // "TRUE" - MMCM output clock (CLKOUT0) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT0) is disabled
+   parameter MMCM_CLKOUT1_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT1) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT1) is disabled
+   parameter MMCM_CLKOUT2_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT2) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT2) is disabled
+   parameter MMCM_CLKOUT3_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT3) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT3) is disabled
+   parameter MMCM_CLKOUT4_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT4) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT4) is disabled
+   parameter MMCM_CLKOUT0_DIVIDE   = 18.125,
+                                     // VCO output divisor for MMCM output clock (CLKOUT0)
+   parameter MMCM_CLKOUT1_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT1)
+   parameter MMCM_CLKOUT2_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT2)
+   parameter MMCM_CLKOUT3_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT3)
+   parameter MMCM_CLKOUT4_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT4)
+
 
    //***************************************************************************
    // Simulation parameters
@@ -191,10 +217,10 @@ module example_top #
    //***************************************************************************
    // AXI4 Shim parameters
    //***************************************************************************
-   parameter C_S_AXI_ID_WIDTH              = 2,
+   parameter C_S_AXI_ID_WIDTH              = 3,
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
-   parameter C_S_AXI_ADDR_WIDTH            = 28,
+   parameter C_S_AXI_ADDR_WIDTH            = 30,
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
@@ -202,7 +228,7 @@ module example_top #
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.
-   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 0,
+   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 1,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
       
@@ -221,12 +247,12 @@ module example_top #
   (
 
    // Inouts
-   inout [15:0]                         ddr3_dq,
-   inout [1:0]                        ddr3_dqs_n,
-   inout [1:0]                        ddr3_dqs_p,
+   inout [31:0]                         ddr3_dq,
+   inout [3:0]                        ddr3_dqs_n,
+   inout [3:0]                        ddr3_dqs_p,
 
    // Outputs
-   output [13:0]                       ddr3_addr,
+   output [14:0]                       ddr3_addr,
    output [2:0]                      ddr3_ba,
    output                                       ddr3_ras_n,
    output                                       ddr3_cas_n,
@@ -238,18 +264,17 @@ module example_top #
    
    output [0:0]           ddr3_cs_n,
    
-   output [1:0]                        ddr3_dm,
+   output [3:0]                        ddr3_dm,
    
    output [0:0]                       ddr3_odt,
    
 
    // Inputs
    
-   // Single-ended system clock
-   input                                        sys_clk_i,
+   // Differential system clocks
+   input                                        sys_clk_p,
+   input                                        sys_clk_n,
    
-   // Single-ended iodelayctrl clk (reference clock)
-   input                                        clk_ref_i,
 
    output                                       tg_compare_error,
    output                                       init_calib_complete,
@@ -283,7 +308,7 @@ function integer clogb2 (input integer size);
   endfunction
 
 
-  localparam DATA_WIDTH            = 16;
+  localparam DATA_WIDTH            = 32;
   localparam RANK_WIDTH = clogb2(RANKS);
   localparam PAYLOAD_WIDTH         = (ECC_TEST == "OFF") ? DATA_WIDTH : DQ_WIDTH;
   localparam BURST_LENGTH          = STR_TO_INT(BURST_MODE);
@@ -304,6 +329,11 @@ function integer clogb2 (input integer size);
       
   wire                              clk;
   wire                              rst;
+  wire                              ui_addn_clk_0;
+  wire                              ui_addn_clk_1;
+  wire                              ui_addn_clk_2;
+  wire                              ui_addn_clk_3;
+  wire                              ui_addn_clk_4;
   wire                              mmcm_locked;
   reg                               aresetn;
   wire                              app_sr_active;
@@ -429,6 +459,11 @@ function integer clogb2 (input integer size);
        .ui_clk                         (clk),
        .ui_clk_sync_rst                (rst),
 
+       .ui_addn_clk_0                  (ui_addn_clk_0),
+       .ui_addn_clk_1                  (ui_addn_clk_1),
+       .ui_addn_clk_2                  (ui_addn_clk_2),
+       .ui_addn_clk_3                  (ui_addn_clk_3),
+       .ui_addn_clk_4                  (ui_addn_clk_4),
        .mmcm_locked                    (mmcm_locked),
        .aresetn                        (aresetn),
        .app_sr_active                  (app_sr_active),
@@ -481,9 +516,8 @@ function integer clogb2 (input integer size);
       
        
 // System Clock Ports
-       .sys_clk_i                       (sys_clk_i),
-// Reference Clock Ports
-       .clk_ref_i                      (clk_ref_i),
+       .sys_clk_p                       (sys_clk_p),
+       .sys_clk_n                       (sys_clk_n),
        .device_temp            (device_temp),
        `ifdef SKIP_CALIB
        .calib_tap_req                    (calib_tap_req),

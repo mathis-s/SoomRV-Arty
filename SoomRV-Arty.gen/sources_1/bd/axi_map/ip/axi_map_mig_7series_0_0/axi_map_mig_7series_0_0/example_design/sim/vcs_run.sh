@@ -95,7 +95,7 @@ vlogan -sverilog wiredly.v >> vcs_sim.log
 vlogan -sverilog sim_tb_top.v >> vcs_sim.log
 
 #Pass the parameters for memory model parameter file#
-vlogan -Xcheck_p1800_2009=char -sverilog +define+x2Gb +define+sg15E +define+x16 ddr3_model.sv >> vcs_sim.log 
+vlogan -Xcheck_p1800_2009=char -sverilog +define+x4Gb +define+sg107E +define+x16 ddr3_model.sv >> vcs_sim.log 
 
 #Simulate the design with sim_tb_top as the top module
 vcs -R -debug_pp -lca sim_tb_top glbl >> vcs_sim.log

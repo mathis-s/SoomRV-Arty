@@ -91,20 +91,20 @@ module axi_map_mig_7series_0_0_mig #
    parameter CKE_WIDTH             = 1,
                                      // # of CKE outputs to memory.
    parameter DATA_BUF_ADDR_WIDTH   = 5,
-   parameter DQ_CNT_WIDTH          = 4,
+   parameter DQ_CNT_WIDTH          = 5,
                                      // = ceil(log2(DQ_WIDTH))
    parameter DQ_PER_DM             = 8,
-   parameter DM_WIDTH              = 2,
+   parameter DM_WIDTH              = 4,
                                      // # of DM (data mask)
-   parameter DQ_WIDTH              = 16,
+   parameter DQ_WIDTH              = 32,
                                      // # of DQ (data)
-   parameter DQS_WIDTH             = 2,
-   parameter DQS_CNT_WIDTH         = 1,
+   parameter DQS_WIDTH             = 4,
+   parameter DQS_CNT_WIDTH         = 2,
                                      // = ceil(log2(DQS_WIDTH))
    parameter DRAM_WIDTH            = 8,
                                      // # of DQ per DQS
    parameter ECC                   = "OFF",
-   parameter DATA_WIDTH            = 16,
+   parameter DATA_WIDTH            = 32,
    parameter ECC_TEST              = "OFF",
    parameter PAYLOAD_WIDTH         = (ECC_TEST == "OFF") ? DATA_WIDTH : DQ_WIDTH,
    parameter MEM_ADDR_ORDER        = "BANK_ROW_COLUMN",
@@ -117,14 +117,14 @@ module axi_map_mig_7series_0_0_mig #
                                       //            for distributed Addressing.
       
    //parameter nBANK_MACHS           = 4,
-   parameter nBANK_MACHS           = 2,
+   parameter nBANK_MACHS           = 4,
    parameter RANKS                 = 1,
                                      // # of Ranks.
    parameter ODT_WIDTH             = 1,
                                      // # of ODT outputs to memory.
-   parameter ROW_WIDTH             = 14,
+   parameter ROW_WIDTH             = 15,
                                      // # of memory Row Address bits.
-   parameter ADDR_WIDTH            = 28,
+   parameter ADDR_WIDTH            = 29,
                                      // # = RANK_WIDTH + BANK_WIDTH
                                      //     + ROW_WIDTH + COL_WIDTH;
                                      // Chip Select is always tied to low for
@@ -152,13 +152,13 @@ module axi_map_mig_7series_0_0_mig #
                                       // # = "true" when clock is shared
                                       //   = "false" when clock is not shared
 
-   parameter PHY_CONTROL_MASTER_BANK = 0,
+   parameter PHY_CONTROL_MASTER_BANK = 1,
                                      // The bank index where master PHY_CONTROL resides,
                                      // equal to the PLL residing bank
-   parameter MEM_DENSITY           = "2Gb",
+   parameter MEM_DENSITY           = "4Gb",
                                      // Indicates the density of the Memory part
                                      // Added for the sake of Vivado simulations
-   parameter MEM_SPEEDGRADE        = "15E",
+   parameter MEM_SPEEDGRADE        = "107E",
                                      // Indicates the Speed grade of Memory Part
                                      // Added for the sake of Vivado simulations
    parameter MEM_DEVICE_WIDTH      = 16,
@@ -189,15 +189,15 @@ module axi_map_mig_7series_0_0_mig #
                                      // DDR2 SDRAM: Burst Type (Mode Register).
                                      // # = "SEQ" - (Sequential),
                                      //   = "INT" - (Interleaved).
-   parameter CL                    = 5,
+   parameter CL                    = 13,
                                      // in number of clock cycles
                                      // DDR3 SDRAM: CAS Latency (Mode Register 0).
                                      // DDR2 SDRAM: CAS Latency (Mode Register).
-   parameter CWL                   = 5,
+   parameter CWL                   = 9,
                                      // in number of clock cycles
                                      // DDR3 SDRAM: CAS Write Latency (Mode Register 2).
                                      // DDR2 SDRAM: Can be ignored
-   parameter OUTPUT_DRV            = "LOW",
+   parameter OUTPUT_DRV            = "HIGH",
                                      // Output Driver Impedance Control (Mode Register 1).
                                      // # = "HIGH" - RZQ/7,
                                      //   = "LOW" - RZQ/6.
@@ -219,7 +219,7 @@ module axi_map_mig_7series_0_0_mig #
    parameter CA_MIRROR             = "OFF",
                                      // C/A mirror opt for DDR3 dual rank
 
-   parameter VDD_OP_VOLT           = "135",
+   parameter VDD_OP_VOLT           = "150",
                                      // # = "150" - 1.5V Vdd Memory part
                                      //   = "135" - 1.35V Vdd Memory part
 
@@ -228,50 +228,76 @@ module axi_map_mig_7series_0_0_mig #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 6000,
+   parameter CLKIN_PERIOD          = 5004,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 8,
+   parameter CLKFBOUT_MULT         = 9,
                                      // write PLL VCO multiplier
    parameter DIVCLK_DIVIDE         = 1,
                                      // write PLL VCO divisor
-   parameter CLKOUT0_PHASE         = 0.0,
+   parameter CLKOUT0_PHASE         = 337.5,
                                      // Phase for PLL output clock (CLKOUT0)
    parameter CLKOUT0_DIVIDE        = 2,
                                      // VCO output divisor for PLL output clock (CLKOUT0)
-   parameter CLKOUT1_DIVIDE        = 4,
+   parameter CLKOUT1_DIVIDE        = 2,
                                      // VCO output divisor for PLL output clock (CLKOUT1)
-   parameter CLKOUT2_DIVIDE        = 64,
+   parameter CLKOUT2_DIVIDE        = 32,
                                      // VCO output divisor for PLL output clock (CLKOUT2)
-   parameter CLKOUT3_DIVIDE        = 16,
+   parameter CLKOUT3_DIVIDE        = 8,
                                      // VCO output divisor for PLL output clock (CLKOUT3)
-   parameter MMCM_VCO              = 666,
+   parameter MMCM_VCO              = 899,
                                      // Max Freq (MHz) of MMCM VCO
-   parameter MMCM_MULT_F           = 8,
+   parameter MMCM_MULT_F           = 4,
                                      // write MMCM VCO multiplier
    parameter MMCM_DIVCLK_DIVIDE    = 1,
                                      // write MMCM VCO divisor
+   parameter MMCM_CLKOUT0_EN       = "TRUE",
+                                     // "TRUE" - MMCM output clock (CLKOUT0) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT0) is disabled
+   parameter MMCM_CLKOUT1_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT1) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT1) is disabled
+   parameter MMCM_CLKOUT2_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT2) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT2) is disabled
+   parameter MMCM_CLKOUT3_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT3) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT3) is disabled
+   parameter MMCM_CLKOUT4_EN       = "FALSE",
+                                     // "TRUE" - MMCM output clock (CLKOUT4) is enabled
+                                     // "FALSE" - MMCM output clock (CLKOUT4) is disabled
+   parameter MMCM_CLKOUT0_DIVIDE   = 18.0000019,
+                                     // VCO output divisor for MMCM output clock (CLKOUT0)
+   parameter MMCM_CLKOUT1_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT1)
+   parameter MMCM_CLKOUT2_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT2)
+   parameter MMCM_CLKOUT3_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT3)
+   parameter MMCM_CLKOUT4_DIVIDE   = 1,
+                                     // VCO output divisor for MMCM output clock (CLKOUT4)
+
 
    //***************************************************************************
    // Memory Timing Parameters. These parameters varies based on the selected
    // memory part.
    //***************************************************************************
-   parameter tCKE                  = 5625,
+   parameter tCKE                  = 5000,
                                      // memory tCKE paramter in pS
-   parameter tFAW                  = 45000,
+   parameter tFAW                  = 35000,
                                      // memory tRAW paramter in pS.
    parameter tPRDI                 = 1_000_000,
                                      // memory tPRDI paramter in pS.
-   parameter tRAS                  = 36000,
+   parameter tRAS                  = 34000,
                                      // memory tRAS paramter in pS.
-   parameter tRCD                  = 13500,
+   parameter tRCD                  = 13910,
                                      // memory tRCD paramter in pS.
    parameter tREFI                 = 7800000,
                                      // memory tREFI paramter in pS.
-   parameter tRFC                  = 160000,
+   parameter tRFC                  = 260000,
                                      // memory tRFC paramter in pS.
-   parameter tRP                   = 13500,
+   parameter tRP                   = 13910,
                                      // memory tRP paramter in pS.
-   parameter tRRD                  = 7500,
+   parameter tRRD                  = 6000,
                                      // memory tRRD paramter in pS.
    parameter tRTP                  = 7500,
                                      // memory tRTP paramter in pS.
@@ -279,7 +305,7 @@ module axi_map_mig_7series_0_0_mig #
                                      // memory tWTR paramter in pS.
    parameter tZQI                  = 128_000_000,
                                      // memory tZQI paramter in nS.
-   parameter tZQCS                 = 64,//64,
+   parameter tZQCS                 = 72,//64,
                                      // memory tZQCS paramter in clock cycles.
 
    //***************************************************************************
@@ -303,7 +329,7 @@ module axi_map_mig_7series_0_0_mig #
    //***************************************************************************
    parameter BYTE_LANES_B0         = 4'b1111,
                                      // Byte lanes used in an IO column.
-   parameter BYTE_LANES_B1         = 4'b0000,
+   parameter BYTE_LANES_B1         = 4'b1111,
                                      // Byte lanes used in an IO column.
    parameter BYTE_LANES_B2         = 4'b0000,
                                      // Byte lanes used in an IO column.
@@ -311,7 +337,7 @@ module axi_map_mig_7series_0_0_mig #
                                      // Byte lanes used in an IO column.
    parameter BYTE_LANES_B4         = 4'b0000,
                                      // Byte lanes used in an IO column.
-   parameter DATA_CTL_B0           = 4'b1100,
+   parameter DATA_CTL_B0           = 4'b1111,
                                      // Indicates Byte lane is data byte lane
                                      // or control Byte lane. '1' in a bit
                                      // position indicates a data byte lane and
@@ -336,30 +362,30 @@ module axi_map_mig_7series_0_0_mig #
                                      // or control Byte lane. '1' in a bit
                                      // position indicates a data byte lane and
                                      // a '0' indicates a control byte lane
-   parameter PHY_0_BITLANES        = 48'h3FE_3FE_FFF_BFF,
-   parameter PHY_1_BITLANES        = 48'h000_000_000_000,
+   parameter PHY_0_BITLANES        = 48'h3FE_3FE_3FE_2FF,
+   parameter PHY_1_BITLANES        = 48'h3FE_FFC_C10_003,
    parameter PHY_2_BITLANES        = 48'h000_000_000_000,
 
    // control/address/data pin mapping parameters
    parameter CK_BYTE_MAP
-     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00,
+     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_13,
    parameter ADDR_MAP
-     = 192'h000_000_000_002_004_009_007_001_005_006_003_010_012_014_011_01A,
-   parameter BANK_MAP   = 36'h01B_017_013,
-   parameter CAS_MAP    = 12'h015,
+     = 192'h000_114_139_138_137_136_135_134_133_132_131_125_128_127_126_12B,
+   parameter BANK_MAP   = 36'h12A_129_124,
+   parameter CAS_MAP    = 12'h122,
    parameter CKE_ODT_BYTE_MAP = 8'h00,
-   parameter CKE_MAP    = 96'h000_000_000_000_000_000_000_019,
-   parameter ODT_MAP    = 96'h000_000_000_000_000_000_000_008,
-   parameter CS_MAP     = 120'h000_000_000_000_000_000_000_000_000_00B,
+   parameter CKE_MAP    = 96'h000_000_000_000_000_000_000_11B,
+   parameter ODT_MAP    = 96'h000_000_000_000_000_000_000_11A,
+   parameter CS_MAP     = 120'h000_000_000_000_000_000_000_000_000_100,
    parameter PARITY_MAP = 12'h000,
-   parameter RAS_MAP    = 12'h016,
-   parameter WE_MAP     = 12'h018,
+   parameter RAS_MAP    = 12'h123,
+   parameter WE_MAP     = 12'h101,
    parameter DQS_BYTE_MAP
-     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_02_03,
-   parameter DATA0_MAP  = 96'h034_032_038_035_031_037_036_033,
-   parameter DATA1_MAP  = 96'h023_026_022_028_025_027_021_024,
-   parameter DATA2_MAP  = 96'h000_000_000_000_000_000_000_000,
-   parameter DATA3_MAP  = 96'h000_000_000_000_000_000_000_000,
+     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_01_02_03,
+   parameter DATA0_MAP  = 96'h031_032_033_034_035_036_037_038,
+   parameter DATA1_MAP  = 96'h021_022_023_024_025_026_027_028,
+   parameter DATA2_MAP  = 96'h011_012_013_014_015_016_017_018,
+   parameter DATA3_MAP  = 96'h000_001_002_003_004_005_006_007,
    parameter DATA4_MAP  = 96'h000_000_000_000_000_000_000_000,
    parameter DATA5_MAP  = 96'h000_000_000_000_000_000_000_000,
    parameter DATA6_MAP  = 96'h000_000_000_000_000_000_000_000,
@@ -374,7 +400,7 @@ module axi_map_mig_7series_0_0_mig #
    parameter DATA15_MAP = 96'h000_000_000_000_000_000_000_000,
    parameter DATA16_MAP = 96'h000_000_000_000_000_000_000_000,
    parameter DATA17_MAP = 96'h000_000_000_000_000_000_000_000,
-   parameter MASK0_MAP  = 108'h000_000_000_000_000_000_000_029_039,
+   parameter MASK0_MAP  = 108'h000_000_000_000_000_009_019_029_039,
    parameter MASK1_MAP  = 108'h000_000_000_000_000_000_000_000_000,
 
    parameter SLOT_0_CONFIG         = 8'b0000_0001,
@@ -389,16 +415,16 @@ module axi_map_mig_7series_0_0_mig #
                                      // to phy_top
    parameter DATA_IO_IDLE_PWRDWN   = "ON",
                                      // # = "ON", "OFF"
-   parameter BANK_TYPE             = "HR_IO",
+   parameter BANK_TYPE             = "HP_IO",
                                      // # = "HP_IO", "HPL_IO", "HR_IO", "HRL_IO"
-   parameter DATA_IO_PRIM_TYPE     = "HR_LP",
+   parameter DATA_IO_PRIM_TYPE     = "HP_LP",
                                      // # = "HP_LP", "HR_LP", "DEFAULT"
    parameter CKE_ODT_AUX           = "FALSE",
    parameter USER_REFRESH          = "OFF",
    parameter WRLVL                 = "ON",
                                      // # = "ON" - DDR3 SDRAM
                                      //   = "OFF" - DDR2 SDRAM.
-   parameter ORDERING              = "STRICT",
+   parameter ORDERING              = "NORM",
                                      // # = "NORM", "STRICT", "RELAXED".
    parameter CALIB_ROW_ADD         = 16'h0000,
                                      // Calibration row address will be used for
@@ -410,10 +436,10 @@ module axi_map_mig_7series_0_0_mig #
                                      // Calibration bank address will be used for
                                      // calibration read and write operations
    parameter TCQ                   = 100,
-   parameter IDELAY_ADJ            = "OFF",
-   parameter FINE_PER_BIT          = "OFF",
-   parameter CENTER_COMP_MODE      = "OFF",
-   parameter PI_VAL_ADJ            = "OFF",
+   parameter IDELAY_ADJ            = "ON",
+   parameter FINE_PER_BIT          = "ON",
+   parameter CENTER_COMP_MODE      = "ON",
+   parameter PI_VAL_ADJ            = "ON",
    parameter IODELAY_GRP0          = "AXI_MAP_MIG_7SERIES_0_0_IODELAY_MIG0",
                                      // It is associated to a set of IODELAYs with
                                      // an IDELAYCTRL that have same IODELAY CONTROLLER
@@ -422,17 +448,17 @@ module axi_map_mig_7series_0_0_mig #
                                      // It is associated to a set of IODELAYs with
                                      // an IDELAYCTRL that have same IODELAY CONTROLLER
                                      // clock frequency (300MHz/400MHz).
-   parameter SYSCLK_TYPE           = "NO_BUFFER",
+   parameter SYSCLK_TYPE           = "DIFFERENTIAL",
                                      // System clock type DIFFERENTIAL, SINGLE_ENDED,
                                      // NO_BUFFER
-   parameter REFCLK_TYPE           = "NO_BUFFER",
+   parameter REFCLK_TYPE           = "USE_SYSTEM_CLOCK",
                                      // Reference clock type DIFFERENTIAL, SINGLE_ENDED,
                                      // NO_BUFFER, USE_SYSTEM_CLOCK
    parameter SYS_RST_PORT          = "FALSE",
                                      // "TRUE" - if pin is selected for sys_rst
                                      //          and IBUF will be instantiated.
                                      // "FALSE" - if pin is not selected for sys_rst
-   parameter FPGA_SPEED_GRADE      = 1,
+   parameter FPGA_SPEED_GRADE      = 2,
                                      // FPGA speed grade
       
    parameter CMD_PIPE_PLUS1        = "ON",
@@ -441,7 +467,7 @@ module axi_map_mig_7series_0_0_mig #
    parameter CAL_WIDTH             = "HALF",
    parameter STARVE_LIMIT          = 2,
                                      // # = 2,3,4.
-   parameter REF_CLK_MMCM_IODELAY_CTRL    = "FALSE",
+   parameter REF_CLK_MMCM_IODELAY_CTRL    = "TRUE",
       
 
    //***************************************************************************
@@ -455,13 +481,13 @@ module axi_map_mig_7series_0_0_mig #
    //***************************************************************************
    // System clock frequency parameters
    //***************************************************************************
-   parameter tCK                   = 3000,
+   parameter tCK                   = 1112,
                                      // memory tCK paramter.
                                      // # = Clock Period in pS.
    parameter nCK_PER_CLK           = 4,
    // # of memory CKs per fabric CLK
    
-   parameter DIFF_TERM_SYSCLK      = "TRUE",
+   parameter DIFF_TERM_SYSCLK      = "FALSE",
                                      // Differential Termination for System
                                      // clock input pins
       
@@ -471,17 +497,17 @@ module axi_map_mig_7series_0_0_mig #
    // AXI4 Shim parameters
    //***************************************************************************
    
-   parameter UI_EXTRA_CLOCKS = "FALSE",
+   parameter UI_EXTRA_CLOCKS = "TRUE",
                                      // Generates extra clocks as
                                      // 1/2, 1/4 and 1/8 of fabrick clock.
                                      // Valid for DDR2/DDR3 AXI interfaces
                                      // based on GUI selection
-   parameter C_S_AXI_ID_WIDTH              = 2,
+   parameter C_S_AXI_ID_WIDTH              = 3,
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
-   parameter C_S_AXI_MEM_SIZE              = "268435456",
+   parameter C_S_AXI_MEM_SIZE              = "1073741824",
                                      // Address Space required for this component
-   parameter C_S_AXI_ADDR_WIDTH            = 28,
+   parameter C_S_AXI_ADDR_WIDTH            = 30,
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
@@ -492,7 +518,7 @@ module axi_map_mig_7series_0_0_mig #
    parameter C_MC_nCK_PER_CLK              = 4,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
-   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 0,
+   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 1,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
    parameter C_RD_WR_ARB_ALGORITHM          = "RD_PRI_REG",
@@ -595,16 +621,20 @@ module axi_map_mig_7series_0_0_mig #
 
    // Inputs
    
-   // Single-ended system clock
-   input                                        sys_clk_i,
+   // Differential system clocks
+   input                                        sys_clk_p,
+   input                                        sys_clk_n,
    
-   // Single-ended iodelayctrl clk (reference clock)
-   input                                        clk_ref_i,
    
    // user interface signals
    output                                       ui_clk,
    output                                       ui_clk_sync_rst,
    
+   output                                       ui_addn_clk_0,
+   output                                       ui_addn_clk_1,
+   output                                       ui_addn_clk_2,
+   output                                       ui_addn_clk_3,
+   output                                       ui_addn_clk_4,
    output                                       mmcm_locked,
    
    input                                        aresetn,
@@ -772,11 +802,11 @@ module axi_map_mig_7series_0_0_mig #
   // Interrupt output
   wire                              interrupt;
 
-  wire                              sys_clk_p;
-  wire                              sys_clk_n;
+  wire                              sys_clk_i;
   wire                              mmcm_clk;
   wire                              clk_ref_p;
   wire                              clk_ref_n;
+  wire                              clk_ref_i;
   wire [11:0]                       device_temp_s;
   wire [11:0]                       device_temp_i;
 
@@ -865,10 +895,8 @@ module axi_map_mig_7series_0_0_mig #
   assign ui_clk = clk;
   assign ui_clk_sync_rst = rst;
   
-  assign sys_clk_p = 1'b0;
-  assign sys_clk_n = 1'b0;
-  assign clk_ref_p = 1'b0;
-  assign clk_ref_n = 1'b0;
+  assign sys_clk_i = 1'b0;
+  assign clk_ref_i = 1'b0;
   assign device_temp = device_temp_s;
       
 
@@ -945,23 +973,34 @@ module axi_map_mig_7series_0_0_mig #
          
   mig_7series_v4_2_infrastructure #
     (
-     .TCQ                (TCQ),
-     .nCK_PER_CLK        (nCK_PER_CLK),
-     .CLKIN_PERIOD       (CLKIN_PERIOD),
-     .SYSCLK_TYPE        (SYSCLK_TYPE),
-     .CLKFBOUT_MULT      (CLKFBOUT_MULT),
-     .DIVCLK_DIVIDE      (DIVCLK_DIVIDE),
-     .CLKOUT0_PHASE      (CLKOUT0_PHASE),
-     .CLKOUT0_DIVIDE     (CLKOUT0_DIVIDE),
-     .CLKOUT1_DIVIDE     (CLKOUT1_DIVIDE),
-     .CLKOUT2_DIVIDE     (CLKOUT2_DIVIDE),
-     .CLKOUT3_DIVIDE     (CLKOUT3_DIVIDE),
-     .MMCM_VCO           (MMCM_VCO),
-     .MMCM_MULT_F        (MMCM_MULT_F),
-     .MMCM_DIVCLK_DIVIDE (MMCM_DIVCLK_DIVIDE),
-     .RST_ACT_LOW        (RST_ACT_LOW),
-     .tCK                (tCK),
-     .MEM_TYPE           (DRAM_TYPE)
+     .TCQ                 (TCQ),
+     .nCK_PER_CLK         (nCK_PER_CLK),
+     .CLKIN_PERIOD        (CLKIN_PERIOD),
+     .SYSCLK_TYPE         (SYSCLK_TYPE),
+     .UI_EXTRA_CLOCKS     (UI_EXTRA_CLOCKS),
+     .CLKFBOUT_MULT       (CLKFBOUT_MULT),
+     .DIVCLK_DIVIDE       (DIVCLK_DIVIDE),
+     .CLKOUT0_PHASE       (CLKOUT0_PHASE),
+     .CLKOUT0_DIVIDE      (CLKOUT0_DIVIDE),
+     .CLKOUT1_DIVIDE      (CLKOUT1_DIVIDE),
+     .CLKOUT2_DIVIDE      (CLKOUT2_DIVIDE),
+     .CLKOUT3_DIVIDE      (CLKOUT3_DIVIDE),
+     .MMCM_VCO            (MMCM_VCO),
+     .MMCM_MULT_F         (MMCM_MULT_F),
+     .MMCM_DIVCLK_DIVIDE  (MMCM_DIVCLK_DIVIDE),
+     .MMCM_CLKOUT0_EN     (MMCM_CLKOUT0_EN),
+     .MMCM_CLKOUT1_EN     (MMCM_CLKOUT1_EN),
+     .MMCM_CLKOUT2_EN     (MMCM_CLKOUT2_EN),
+     .MMCM_CLKOUT3_EN     (MMCM_CLKOUT3_EN),
+     .MMCM_CLKOUT4_EN     (MMCM_CLKOUT4_EN),
+     .MMCM_CLKOUT0_DIVIDE (MMCM_CLKOUT0_DIVIDE),
+     .MMCM_CLKOUT1_DIVIDE (MMCM_CLKOUT1_DIVIDE),
+     .MMCM_CLKOUT2_DIVIDE (MMCM_CLKOUT2_DIVIDE),
+     .MMCM_CLKOUT3_DIVIDE (MMCM_CLKOUT3_DIVIDE),
+     .MMCM_CLKOUT4_DIVIDE (MMCM_CLKOUT4_DIVIDE),
+     .RST_ACT_LOW         (RST_ACT_LOW),
+     .tCK                 (tCK),
+     .MEM_TYPE            (DRAM_TYPE)
      )
     u_ddr3_infrastructure
       (
@@ -978,11 +1017,11 @@ module axi_map_mig_7series_0_0_mig #
        .psdone           (psdone),
        .iddr_rst         (iddr_rst),
 //       .auxout_clk       (),
-       .ui_addn_clk_0    (),
-       .ui_addn_clk_1    (),
-       .ui_addn_clk_2    (),
-       .ui_addn_clk_3    (),
-       .ui_addn_clk_4    (),
+       .ui_addn_clk_0    (ui_addn_clk_0),
+       .ui_addn_clk_1    (ui_addn_clk_1),
+       .ui_addn_clk_2    (ui_addn_clk_2),
+       .ui_addn_clk_3    (ui_addn_clk_3),
+       .ui_addn_clk_4    (ui_addn_clk_4),
        .pll_locked       (pll_locked),
        .mmcm_locked      (mmcm_locked),
        .rst_phaser_ref   (rst_phaser_ref),

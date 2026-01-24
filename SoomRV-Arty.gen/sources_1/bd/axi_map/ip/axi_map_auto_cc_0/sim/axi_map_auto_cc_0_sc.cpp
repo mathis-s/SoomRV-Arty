@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -61,8 +61,8 @@ axi_map_auto_cc_0_sc::axi_map_auto_cc_0_sc(const sc_core::sc_module_name& nm) : 
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_AXI_ID_WIDTH", "2");
-    model_param_props.addLong("C_AXI_ADDR_WIDTH", "28");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "3");
+    model_param_props.addLong("C_AXI_ADDR_WIDTH", "30");
     model_param_props.addLong("C_AXI_DATA_WIDTH", "128");
     model_param_props.addLong("C_S_AXI_ACLK_RATIO", "1");
     model_param_props.addLong("C_M_AXI_ACLK_RATIO", "2");
@@ -77,7 +77,7 @@ axi_map_auto_cc_0_sc::axi_map_auto_cc_0_sc(const sc_core::sc_module_name& nm) : 
     model_param_props.addLong("C_AXI_SUPPORTS_WRITE", "1");
     model_param_props.addLong("C_AXI_SUPPORTS_READ", "1");
     model_param_props.addLong("C_SYNCHRONIZER_STAGE", "3");
-    model_param_props.addString("C_FAMILY", "artix7");
+    model_param_props.addString("C_FAMILY", "kintex7");
     model_param_props.addString("COMPONENT_NAME", "axi_map_auto_cc_0");
 
   mp_impl = new axi_clock_converter("inst", model_param_props);

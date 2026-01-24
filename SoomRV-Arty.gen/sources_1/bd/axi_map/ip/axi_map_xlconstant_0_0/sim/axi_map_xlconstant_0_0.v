@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 8
+// IP Revision: 9
 
 `timescale 1ns/1ps
 
@@ -59,7 +59,7 @@ module axi_map_xlconstant_0_0 (
 
 output wire [0 : 0] dout;
 
-  xlconstant_v1_1_8_xlconstant #(
+  xlconstant_v1_1_9_xlconstant #(
     .CONST_WIDTH(1),
     .CONST_VAL(1'H0)
   ) inst (

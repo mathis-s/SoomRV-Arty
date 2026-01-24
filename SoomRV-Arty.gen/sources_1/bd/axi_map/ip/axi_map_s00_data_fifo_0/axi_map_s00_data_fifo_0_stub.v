@@ -1,20 +1,20 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Sat Nov 18 12:50:52 2023
+// Tool Version: Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+// Date        : Wed Dec  4 20:39:26 2024
 // Host        : m-desktop running 64-bit Manjaro Linux
 // Command     : write_verilog -force -mode synth_stub -rename_top axi_map_s00_data_fifo_0 -prefix
 //               axi_map_s00_data_fifo_0_ axi_map_s00_data_fifo_0_stub.v
 // Design      : axi_map_s00_data_fifo_0
 // Purpose     : Stub declaration of top-level module interface
-// Device      : xc7a100tcsg324-1
+// Device      : xc7k325tffg900-2
 // --------------------------------------------------------------------------------
 
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* X_CORE_INFO = "axi_data_fifo_v2_1_28_axi_data_fifo,Vivado 2023.2" *)
+(* X_CORE_INFO = "axi_data_fifo_v2_1_30_axi_data_fifo,Vivado 2024.1" *)
 module axi_map_s00_data_fifo_0(aclk, aresetn, s_axi_awid, s_axi_awaddr, 
   s_axi_awlen, s_axi_awsize, s_axi_awburst, s_axi_awlock, s_axi_awcache, s_axi_awprot, 
   s_axi_awregion, s_axi_awqos, s_axi_awvalid, s_axi_awready, s_axi_wdata, s_axi_wstrb, 

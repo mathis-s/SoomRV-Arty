@@ -1,5 +1,5 @@
 // (c) Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-// (c) Copyright 2022-2023 Advanced Micro Devices, Inc. All rights reserved.
+// (c) Copyright 2022-2024 Advanced Micro Devices, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of AMD and is protected under U.S. and international copyright
@@ -75,7 +75,7 @@ axi_map_s00_data_fifo_0_sc::axi_map_s00_data_fifo_0_sc(const sc_core::sc_module_
     model_param_props.addLong("C_AXI_WRITE_FIFO_DELAY", "1");
     model_param_props.addLong("C_AXI_READ_FIFO_DEPTH", "512");
     model_param_props.addLong("C_AXI_READ_FIFO_DELAY", "1");
-    model_param_props.addString("C_FAMILY", "artix7");
+    model_param_props.addString("C_FAMILY", "kintex7");
     model_param_props.addString("C_AXI_WRITE_FIFO_TYPE", "bram");
     model_param_props.addString("C_AXI_READ_FIFO_TYPE", "bram");
     model_param_props.addString("COMPONENT_NAME", "axi_map_s00_data_fifo_0");

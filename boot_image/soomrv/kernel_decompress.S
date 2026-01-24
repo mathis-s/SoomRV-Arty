@@ -92,11 +92,11 @@ _exception:
         call printhex
         addi s0, s0, 4
         bne s0, s1, .exception_dump_regs
-    
+
     li a0, 0x10000000
     li a1, 10
     sb a1, 0(a0)
-    
+
     # Reading the instruction might cause another exception,
     # so set tvec to terminate.
     la a0, .terminate
@@ -134,7 +134,7 @@ printhex:
         andi a1, a1, 0xF
         addi a1, a1, -10
         bgez a1, .printhex_af
-        addi a1, a1, 10+'0'-'A'    
+        addi a1, a1, 10+'0'-'A'
         .printhex_af:
         addi a1, a1, 'A'
         sb a1, 0(a0)
@@ -168,7 +168,7 @@ do_decompress:
     la a1, _binary_dtb_start
     la a2, _binary_dtb_size
     call memcpy
-    
+
     la a0, .message2
     call print
 
